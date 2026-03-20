@@ -3,98 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ゴッホ 手紙の記録 — 色彩・技法・自然と光</title>
+<title>ゴッホ 手紙の記録</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=IM+Fell+English:ital@0;1&family=Space+Mono:wght@400;700&display=swap');
-:root{
-  --ink:#17120a;--paper:#f7f0e0;--paper2:#efe6cc;--paper3:#e8ddc0;
-  --amber:#b8720e;--amber2:#d4902a;--rust:#7a2e10;--sage:#3d5e36;--blue:#1e3a6e;
-  --fade:#7a6a50;--fade2:#a89878;--rule:rgba(180,158,110,0.35);--rule2:rgba(180,158,110,0.15);
-}
+:root{--ink:#17120a;--paper:#f7f0e0;--paper2:#efe6cc;--paper3:#e8ddc0;--amber:#b8720e;--amber2:#d4902a;--rust:#7a2e10;--sage:#3d5e36;--blue:#1e3a6e;--plum:#4e2a5a;--fade:#7a6a50;--fade2:#a89878;--rule:rgba(180,158,110,.35);--rule2:rgba(180,158,110,.15);}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--ink);font-family:'Noto Serif JP',serif;color:var(--ink);min-height:100vh;}
-
 .splash{background:var(--ink);padding:2.5rem 2rem 1.8rem;text-align:center;position:relative;}
 .splash::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,#3a2a0818,transparent 70%);pointer-events:none;}
-.splash-en{font-family:'IM Fell English',serif;font-style:italic;color:var(--amber2);font-size:clamp(1.2rem,3.5vw,2rem);letter-spacing:.02em;}
-.splash-ja{font-family:'Noto Serif JP',serif;font-weight:300;color:var(--fade2);font-size:clamp(.7rem,1.8vw,.85rem);margin-top:.4rem;letter-spacing:.15em;}
+.splash-en{font-family:'IM Fell English',serif;font-style:italic;color:var(--amber2);font-size:clamp(1.2rem,3.5vw,2rem);}
+.splash-ja{font-weight:300;color:var(--fade2);font-size:.85rem;margin-top:.4rem;letter-spacing:.15em;}
 .splash-rule{width:60px;height:1px;background:var(--amber);margin:1.2rem auto;opacity:.6;}
-.splash-desc{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.18em;color:#5a4a2a;text-transform:uppercase;}
-
+.splash-desc{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.18em;color:#5a4a2a;text-transform:uppercase;}
 .era-section{background:var(--ink);border-top:1px solid #2e2414;border-bottom:1px solid #2e2414;overflow-x:auto;}
 .era-track{display:flex;min-width:max-content;}
-.era-item{cursor:pointer;padding:.85rem 1.3rem;border-right:1px solid #2e2414;transition:background .2s;min-width:120px;flex-shrink:0;}
+.era-item{cursor:pointer;padding:.8rem 1.1rem;border-right:1px solid #2e2414;transition:background .2s;min-width:100px;flex-shrink:0;}
 .era-item:hover{background:#1e1810;}
 .era-item.active{background:#2a1e0e;border-bottom:2px solid var(--amber2);}
 .era-item.active .era-city{color:var(--amber2);}
-.era-city{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.15em;color:#5a4a2a;text-transform:uppercase;display:block;}
-.era-year{font-family:'IM Fell English',serif;font-style:italic;color:#3a2e1a;font-size:.72rem;display:block;margin-top:.12rem;}
-.era-note{font-size:.58rem;color:#3a2e1a;margin-top:.25rem;line-height:1.4;font-weight:300;}
+.era-city{font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.13em;color:#5a4a2a;text-transform:uppercase;display:block;}
+.era-year{font-family:'IM Fell English',serif;font-style:italic;color:#3a2e1a;font-size:.68rem;display:block;margin-top:.1rem;}
+.era-note{font-size:.54rem;color:#3a2e1a;margin-top:.2rem;line-height:1.4;font-weight:300;}
 .era-item.active .era-note{color:#7a6a50;}
-
-.era-desc-panel{background:#1a1408;border-bottom:1px solid #2e2414;padding:1.1rem 1.5rem;display:none;}
+.era-desc-panel{background:#1a1408;border-bottom:1px solid #2e2414;padding:1rem 1.4rem;display:none;}
 .era-desc-panel.visible{display:block;}
-.era-desc-panel h3{font-family:'IM Fell English',serif;font-style:italic;color:var(--amber2);font-size:.95rem;margin-bottom:.45rem;}
-.era-desc-panel p{font-size:.76rem;line-height:1.9;color:#7a6a50;font-weight:300;}
-
-.tag-bar{background:var(--ink);padding:.7rem 1rem;display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;border-bottom:1px solid #2e2414;position:sticky;top:0;z-index:50;}
-.tag-btn{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid #3a2e1a;background:transparent;color:#5a4a2a;padding:.3rem .75rem;cursor:pointer;border-radius:1px;transition:all .15s;white-space:nowrap;}
+.era-desc-panel h3{font-family:'IM Fell English',serif;font-style:italic;color:var(--amber2);font-size:.92rem;margin-bottom:.4rem;}
+.era-desc-panel p{font-size:.74rem;line-height:1.9;color:#7a6a50;font-weight:300;}
+.tag-bar{background:var(--ink);padding:.65rem .8rem;display:flex;flex-wrap:wrap;gap:.3rem;justify-content:center;border-bottom:1px solid #2e2414;position:sticky;top:0;z-index:50;}
+.tag-btn{font-family:'Space Mono',monospace;font-size:.54rem;letter-spacing:.13em;text-transform:uppercase;border:1px solid #3a2e1a;background:transparent;color:#5a4a2a;padding:.28rem .7rem;cursor:pointer;border-radius:1px;transition:all .15s;white-space:nowrap;}
 .tag-btn:hover{border-color:var(--fade2);color:var(--fade2);}
 .tag-btn.active{background:var(--amber);color:var(--ink);border-color:var(--amber);}
-
-.search-bar{background:var(--ink);padding:.55rem 1rem;display:flex;justify-content:center;border-bottom:1px solid #2e2414;}
-.search-bar input{font-family:'Space Mono',monospace;font-size:.66rem;background:#1e1810;border:1px solid #3a2e1a;color:var(--amber2);padding:.42rem .9rem;width:100%;max-width:460px;border-radius:1px;outline:none;letter-spacing:.04em;}
+.search-bar{background:var(--ink);padding:.5rem .8rem;display:flex;justify-content:center;border-bottom:1px solid #2e2414;}
+.search-bar input{font-family:'Space Mono',monospace;font-size:.64rem;background:#1e1810;border:1px solid #3a2e1a;color:var(--amber2);padding:.4rem .85rem;width:100%;max-width:440px;border-radius:1px;outline:none;}
 .search-bar input::placeholder{color:#3a2e1a;}
 .search-bar input:focus{border-color:var(--amber);}
-
-main{max-width:820px;margin:0 auto;padding:1.4rem 1rem 5rem;}
-.stats-line{font-family:'Space Mono',monospace;font-size:.56rem;color:#3a2e1a;letter-spacing:.12em;text-align:right;margin-bottom:1.1rem;border-bottom:1px solid #2e2414;padding-bottom:.55rem;}
-
-.letter-card{background:var(--paper);margin-bottom:1.3rem;border-radius:1px;box-shadow:0 1px 8px rgba(0,0,0,.5),0 0 0 1px rgba(180,158,100,.12);overflow:hidden;animation:rise .22s ease both;}
+main{max-width:800px;margin:0 auto;padding:1.3rem .9rem 5rem;}
+.stats-line{font-family:'Space Mono',monospace;font-size:.54rem;color:#3a2e1a;letter-spacing:.1em;text-align:right;margin-bottom:1rem;border-bottom:1px solid #2e2414;padding-bottom:.5rem;}
+.letter-card{background:var(--paper);margin-bottom:1.2rem;border-radius:1px;box-shadow:0 1px 8px rgba(0,0,0,.5),0 0 0 1px rgba(180,158,100,.1);overflow:hidden;animation:rise .2s ease both;}
 @keyframes rise{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
 .letter-card::before{content:'';display:block;height:2px;}
 .letter-card[data-tag="色彩"]::before{background:linear-gradient(90deg,#b8720e,#e4a040);}
 .letter-card[data-tag="技法"]::before{background:linear-gradient(90deg,#7a2e10,#b05030);}
 .letter-card[data-tag="自然・光"]::before{background:linear-gradient(90deg,#4a7a30,#90c060);}
-
-.card-head{display:flex;justify-content:space-between;align-items:flex-start;padding:.8rem 1.1rem .55rem;border-bottom:1px solid var(--rule);gap:.5rem;flex-wrap:wrap;}
-.card-to{font-family:'Space Mono',monospace;font-size:.53rem;letter-spacing:.12em;color:var(--fade2);text-transform:uppercase;}
-.card-to strong{font-size:.65rem;color:var(--ink);display:block;margin-top:.08rem;letter-spacing:.04em;}
-.card-right{display:flex;flex-direction:column;align-items:flex-end;gap:.25rem;}
-.tag-chip{font-family:'Space Mono',monospace;font-size:.53rem;letter-spacing:.1em;padding:.16rem .52rem;border-radius:1px;color:white;}
-.chip-色彩{background:#9a6010;}.chip-技法{background:#7a2e10;}.chip-自然・光{background:#4a7a30;}
-.card-date{font-family:'Space Mono',monospace;font-size:.56rem;color:var(--fade2);}
-.card-num{font-size:.48rem;color:var(--fade2);opacity:.5;}
-
-.card-body{padding:.85rem 1.1rem .75rem;}
-.excerpt-en{font-family:'IM Fell English',serif;font-style:italic;font-size:.86rem;line-height:1.82;color:#3a2e18;border-left:2px solid var(--rule);padding-left:.72rem;margin-bottom:.65rem;}
-.excerpt-ja{font-size:.76rem;line-height:2.05;color:var(--fade);padding-left:.72rem;border-left:2px solid var(--rule2);font-weight:300;}
-
-.ask-section{border-top:1px solid var(--rule);padding:.65rem 1.1rem;background:var(--paper3);}
-.ask-toggle{font-family:'Space Mono',monospace;font-size:.53rem;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:1px solid var(--rule);color:var(--fade2);padding:.28rem .68rem;cursor:pointer;border-radius:1px;transition:all .15s;}
+.letter-card[data-tag="苦悩・内面"]::before{background:linear-gradient(90deg,#4e2a5a,#8a50aa);}
+.letter-card[data-tag="暮らし・家族"]::before{background:linear-gradient(90deg,#2a5a5a,#50aaaa);}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;padding:.75rem 1rem .5rem;border-bottom:1px solid var(--rule);gap:.4rem;flex-wrap:wrap;}
+.card-to{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.12em;color:var(--fade2);text-transform:uppercase;}
+.card-to strong{font-size:.62rem;color:var(--ink);display:block;margin-top:.06rem;}
+.card-right{display:flex;flex-direction:column;align-items:flex-end;gap:.22rem;}
+.tag-chip{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.09em;padding:.14rem .48rem;border-radius:1px;color:white;}
+.chip-色彩{background:#9a6010;}.chip-技法{background:#7a2e10;}.chip-自然・光{background:#4a7a30;}.chip-苦悩・内面{background:#4e2a5a;}.chip-暮らし・家族{background:#2a5a5a;}
+.card-date{font-family:'Space Mono',monospace;font-size:.52rem;color:var(--fade2);}
+.card-num{font-size:.46rem;color:var(--fade2);opacity:.45;}
+.card-body{padding:.8rem 1rem .7rem;}
+.excerpt-ja{font-size:.78rem;line-height:2.05;color:#3a2e18;font-weight:300;}
+.ask-section{border-top:1px solid var(--rule);padding:.6rem 1rem;background:var(--paper3);}
+.ask-toggle{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;background:transparent;border:1px solid var(--rule);color:var(--fade2);padding:.26rem .64rem;cursor:pointer;border-radius:1px;transition:all .15s;}
 .ask-toggle:hover{border-color:var(--blue);color:#6a8acc;}
-.ask-form{display:none;margin-top:.55rem;}
+.ask-form{display:none;margin-top:.5rem;}
 .ask-form.open{display:block;}
-.ask-form textarea{font-family:'Noto Serif JP',serif;font-size:.76rem;width:100%;background:var(--paper);border:1px solid var(--rule);color:var(--ink);padding:.45rem .65rem;resize:vertical;min-height:52px;border-radius:1px;outline:none;font-weight:300;}
+.ask-form textarea{font-family:'Noto Serif JP',serif;font-size:.75rem;width:100%;background:var(--paper);border:1px solid var(--rule);color:var(--ink);padding:.42rem .6rem;resize:vertical;min-height:50px;border-radius:1px;outline:none;font-weight:300;}
 .ask-form textarea:focus{border-color:var(--amber);}
-.ask-send{font-family:'Space Mono',monospace;font-size:.53rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--amber);background:transparent;color:var(--amber);padding:.28rem .75rem;cursor:pointer;border-radius:1px;margin-top:.35rem;transition:all .15s;}
+.ask-send{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--amber);background:transparent;color:var(--amber);padding:.26rem .7rem;cursor:pointer;border-radius:1px;margin-top:.32rem;transition:all .15s;}
 .ask-send:hover{background:var(--amber);color:var(--ink);}
-.ask-reply{display:none;font-size:.74rem;line-height:1.95;color:#3a2e18;margin-top:.55rem;padding-top:.55rem;border-top:1px solid var(--rule);white-space:pre-wrap;font-weight:300;}
+.ask-reply{display:none;font-size:.72rem;line-height:1.95;color:#3a2e18;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--rule);white-space:pre-wrap;font-weight:300;}
 .ask-reply.visible{display:block;}
+.load-more{display:block;margin:1.5rem auto;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid #5a4a2a;background:transparent;color:#5a4a2a;padding:.6rem 2rem;cursor:pointer;border-radius:1px;transition:all .2s;}
+.load-more:hover{border-color:var(--amber2);color:var(--amber2);}
+.load-more.hidden{display:none;}
 .empty{text-align:center;color:#3a2e1a;padding:4rem;font-style:italic;display:none;}
 .empty.on{display:block;}
-::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar{width:4px;height:4px;}
 ::-webkit-scrollbar-track{background:var(--ink);}
-::-webkit-scrollbar-thumb{background:#3a2e1a;border-radius:3px;}
+::-webkit-scrollbar-thumb{background:#3a2e1a;border-radius:2px;}
 </style>
 </head>
 <body>
 
 <div class="splash">
   <div class="splash-en">Letters on Painting</div>
-  <div class="splash-ja">ヴィンセント・ファン・ゴッホ — 色彩・技法・自然と光についての手紙 150通</div>
+  <div class="splash-ja">ヴィンセント・ファン・ゴッホ — 手紙の記録 全200通</div>
   <div class="splash-rule"></div>
-  <div class="splash-desc">テオ・ベルナール・ラパール宛 より抜粋</div>
+  <div class="splash-desc">テオ・ベルナール・ラパール・ウィル宛 より抜粋 / 日本語訳</div>
 </div>
 
 <div class="era-section">
@@ -116,317 +106,503 @@ main{max-width:820px;margin:0 auto;padding:1.4rem 1rem 5rem;}
 <div class="tag-bar" id="tagBar">
   <button class="tag-btn active" data-tag="all">すべて</button>
   <button class="tag-btn" data-tag="色彩">🎨 色彩</button>
-  <button class="tag-btn" data-tag="技法">🖌 技法・筆触</button>
+  <button class="tag-btn" data-tag="技法">🖌 技法</button>
   <button class="tag-btn" data-tag="自然・光">🌾 自然・光</button>
+  <button class="tag-btn" data-tag="苦悩・内面">💭 苦悩・内面</button>
+  <button class="tag-btn" data-tag="暮らし・家族">🏠 暮らし・家族</button>
 </div>
-<div class="search-bar">
-  <input type="text" id="searchInput" placeholder="キーワード検索 — 色名・技法・地名など" />
-</div>
+<div class="search-bar"><input type="text" id="searchInput" placeholder="キーワード検索"></div>
 
 <main>
   <div class="stats-line" id="statsLine">— 件</div>
   <div id="cards"></div>
   <div class="empty" id="empty">該当する手紙が見つかりません</div>
+  <button class="load-more hidden" id="loadMore" onclick="loadMore()">さらに読み込む</button>
 </main>
 
 <script>
-const eraDescs = {
-  etten:{title:"エッテン（1881年）— 出発",text:"27歳で画家を志す。農民・職人の素描を猛練習。油彩はまだ始まっていないが、光と影を観察する習慣がこの時期に形成される。コンスタン・ホイスマンスの素描教本を手放さなかった。"},
-  hague:{title:"ハーグ（1882〜83年）— 油彩との格闘",text:"親戚の画家モーフェの指導のもと初めて油彩・水彩に取り組む。色調の研究を始め、ドラクロワの補色理論に初めて言及するのもこの時期。スヘーフェニンゲンの海岸で光と影の研究を重ねた。"},
-  drenthe:{title:"ドレンテ（1883年）— 孤独と土の色",text:"北オランダの泥炭地で孤独に制作。単色に見える景色の中に無数の色調の変化を発見する。霧・雨・夕焼けの光を徹底的に観察した時期。"},
-  nuenen:{title:"ニューネン（1883〜85年）— 農民の画家",text:"農民・織工を描く暗い土調の時代。しかし色彩理論の研究は深まり、「じゃがいも食べる人たち」に集大成される。レンブラント・ハルスへの言及が増え、筆触の研究が始まる。"},
-  antwerp:{title:"アントワープ（1885〜86年）— 浮世絵との出会い",text:"日本の浮世絵を大量購入。平坦な色面と大胆な構図に衝撃を受ける。ルーベンスの自由な筆触にも影響を受け、パレットに少しずつ明るい色が混じり始める。"},
-  paris:{title:"パリ（1886〜88年）— 光との出会い",text:"印象派・点描派と出会い、補色の並置を身体で学ぶ。パレットが劇的に明るくなる転換期。「暗さを脱学習する」とゴッホ自身が表現した時代。花や自画像を大量に描いた。"},
-  arles:{title:"アルル（1888〜89年）— 最盛期",text:"南仏の強烈な太陽光の中で最も多産な時期。「色の決断」という概念が手紙に頻出。約15ヶ月で200点以上を制作。ゴーギャンとの共同生活、耳切り事件。"},
-  saintremy:{title:"サン＝レミ（1889〜90年）— 渦と星",text:"精神病院での療養中も描き続ける。筆触が渦巻き状に発展。自然観察の記述が増え、光の変化への鋭い感受性が際立つ。ミレーの模写を「色の翻訳」として行う。"},
-  auvers:{title:"オーヴェル（1890年）— 最後の70日",text:"最後の70日。麦畑・空・色彩への言及が最後の手紙まで続く。70日間で約70点。1890年7月29日死去、37歳。"}
+const eraDescs={
+  etten:{title:"エッテン（1881年）— 出発",text:"27歳で画家を志す。農民・職人の素描を猛練習。コンスタン・ホイスマンスの素描教本を手放さなかった。テオへの手紙が始まる。家族との関係はこの頃からすでに複雑だった。"},
+  hague:{title:"ハーグ（1882〜83年）— 油彩との格闘",text:"モーフェの指導のもと初めて油彩に取り組む。娼婦のシーン（シーン・フールニク）と同棲し、家族を激怒させる。貧困の中でも描き続けた。スヘーフェニンゲンの海岸で光の研究を重ねた。"},
+  drenthe:{title:"ドレンテ（1883年）— 孤独と土の色",text:"北オランダの泥炭地で孤独に制作。単色に見える景色の中に無数の色調を発見する。極度の貧困と孤独の中で、テオへの手紙が唯一の対話だった。"},
+  nuenen:{title:"ニューネン（1883〜85年）— 農民の画家",text:"両親の家に戻る。農民・織工を描く暗い土調の時代。父が突然死去。「じゃがいも食べる人たち」完成。レンブラントへの傾倒が深まる。"},
+  antwerp:{title:"アントワープ（1885〜86年）— 転換期",text:"日本の浮世絵を大量購入。ルーベンスに衝撃。美術学校に通うが反りが合わず。梅毒の治療を受ける。パリへの渇望が高まる。"},
+  paris:{title:"パリ（1886〜88年）— 光との出会い",text:"テオと同居。印象派・点描派と出会いパレットが劇的に明るくなる。モネ、ピサロ、スーラ、ゴーギャンと親交。花と自画像を大量に描いた。テオへの経済的依存に強い罪悪感を持ち続けた。"},
+  arles:{title:"アルル（1888〜89年）— 最盛期と崩壊",text:"南仏の太陽に魅了され約200点を制作。「画家の共同体」を夢みゴーギャンを招く。12月の耳切り事件で入院。テオの結婚と子供の誕生を手紙で祝った。"},
+  saintremy:{title:"サン＝レミ（1889〜90年）— 渦と再生",text:"精神病院に自ら入院。発作の合間に傑作を次々と描く。「星月夜」「糸杉」。テオの息子ヴィンセント・ウィレムの誕生。退院を決意する。"},
+  auvers:{title:"オーヴェル（1890年）— 最後の70日",text:"ガシェ医師のもとへ。70日で約70点。テオとの経済的緊張が最後の手紙にも滲む。7月27日、拳銃で自らを撃つ。29日死去、37歳。"}
 };
 
-const letters = [
-  // ── ETTEN ──
+const letters=[
+  // ══ ETTEN 1881 ══
   {id:"E01",to:"テオ",date:"1881年9月",period:"etten",tag:"自然・光",
-   en:"I have been drawing outdoors every day. The light here before eight in the morning has a quality I have not seen before. Everything is wet with dew and the light comes horizontal, touching every blade of grass. Nothing casts a shadow yet. Everything glows.",
-   ja:"毎日外でデッサンをしている。ここの朝八時前の光は、これまで見たことのない質を持っている。すべてが露で濡れていて、光は水平に射して草の一本一本に触れる。まだ何も影を落としていない。すべてが輝いている。"},
+   ja:"毎日外でデッサンをしている。朝八時前の光は、これまで見たことのない質を持っている。すべてが露で濡れていて、光は水平に射して草の一本一本に触れる。まだ何も影を落としていない。すべてが輝いている。"},
   {id:"E02",to:"テオ",date:"1881年10月",period:"etten",tag:"色彩",
-   en:"The fields after harvest are a colour I cannot name exactly. Not brown, not grey, not gold — all three at once, and beneath it the dark soil showing through in patches. I have tried to draw it but drawing cannot capture colour. I need paint.",
    ja:"収穫後の野原は正確に名前をつけられない色をしている。茶色でも灰色でも金色でもなく——三つ同時に、そしてその下に暗い土が所々透けて見える。デッサンで描こうとしたが、デッサンは色を捉えられない。絵の具が必要だ。"},
   {id:"E03",to:"ラパール",date:"1881年11月",period:"etten",tag:"技法",
-   en:"The method of Bargue is: first the mass, then the contour, then the details — never the other way. The beginner's mistake is to start with the detail and build the whole from it. It cannot be done. The whole must come first.",
    ja:"バルグの方法は：まず塊、次に輪郭、それから細部——決してその逆ではない。初心者の誤りは細部から始めて、そこから全体を組み立てようとすることだ。それはできない。全体が先に来なければならない。"},
   {id:"E04",to:"テオ",date:"1881年12月",period:"etten",tag:"技法",
-   en:"I have been drawing the same figure over and over — a digger seen from behind. The weight of the body resting on the spade is the thing. The whole figure must feel heavy, earthbound. I draw it again every morning.",
-   ja:"同じ人物を何度も繰り返し描いている——後ろから見たシャベルを使う人。シャベルにかかる体の重さがポイントだ。人物全体が重く、大地に縛られているように感じられなければならない。毎朝また描き直す。"},
+   ja:"シャベルを使う人を後ろから何度も描いている。シャベルにかかる体の重さがポイントだ。人物全体が重く、大地に縛られているように感じられなければならない。毎朝また描き直す。昨日より良くなっているかどうかも分からないまま。"},
+  {id:"E05",to:"テオ",date:"1881年12月",period:"etten",tag:"暮らし・家族",
+   ja:"父とまた言い争いになった。私が画家になることを父はまだ信じていない——あるいは信じたくないのだ。しかし私は他に道がない。他のすべての道は閉じている。絵を描くこと以外に、私が存在できる場所はどこにもない。"},
 
-  // ── HAGUE ──
+  // ══ HAGUE 1882–83 ══
   {id:"H01",to:"テオ",date:"1882年3月",period:"hague",tag:"技法",
-   en:"Mauve showed me how to hold the palette knife — not like a knife but like a mason's trowel. You spread the paint rather than apply it. I had been working too tight, too cautious. He told me: be bolder. The timid mark is always wrong.",
-   ja:"モーフェはパレットナイフの持ち方を見せてくれた——刃物ではなく石工の鏝のように。絵の具は塗るのではなく広げる。私はずっと小さくまとめすぎ、慎重すぎた。彼は言った：もっと大胆になれ。臆病な筆跡はいつも間違っている。"},
+   ja:"モーフェはパレットナイフの持ち方を見せてくれた——刃物ではなく石工の鏝のように。絵の具は塗るのではなく広げる。私はずっと慎重すぎた。彼は言った：もっと大胆になれ。臆病な筆跡はいつも間違っている。"},
   {id:"H02",to:"テオ",date:"1882年4月",period:"hague",tag:"色彩",
-   en:"I painted a carpenter's workshop in the rain. The wet cobblestones reflect the sky — a pale grey-green. The wood shavings on the ground are a warm ochre. Against the cold grey of the stones, the ochre seems to glow. Complementary colours, without my planning it.",
    ja:"雨の中の大工の作業場を描いた。濡れた石畳が空を反射している——淡い灰緑色。地面の木屑は温かいオークル。石の冷たい灰色に対して、オークルが輝いているように見える。意図せず、補色になっていた。"},
-  {id:"H03",to:"テオ",date:"1882年5月",period:"hague",tag:"道具",
-   en:"I have started working in watercolour. It is completely different from pencil — the medium does not forgive. Once the colour is down it is down. The transparency of watercolour for the sky — nothing else achieves that.",
-   ja:"水彩を始めた。鉛筆とはまったく別の修練だ——この素材はミスを許さない。一度色を置いたら、そこに残る。空のための水彩の透明感——他のもので代わりにはならない。"},
+  {id:"H03",to:"テオ",date:"1882年5月",period:"hague",tag:"暮らし・家族",
+   ja:"シーンのことを話さなければならない。彼女は街頭の女で、子供を連れていた。私は彼女を描いている。彼女は私のモデルになってくれる。誰かが私の絵のために座ってくれること——それだけで私には十分だ。テオ、判断しないでくれ。"},
   {id:"H04",to:"テオ",date:"1882年6月",period:"hague",tag:"自然・光",
-   en:"I went to Scheveningen to paint the sea. The grey of the North Sea in overcast light is extraordinary — not one grey but twenty. The horizon where grey sea meets grey sky is impossible to find; they melt into each other. The white of the wave crests is the only thing that is truly white.",
    ja:"海を描きにスヘーフェニンゲンへ行った。曇り空の北海の灰色は並外れている——一色の灰色ではなく二十の灰色だ。灰色の海と灰色の空が出会う地平線は見つけられない。互いに溶け合っている。波頭の白だけが本当に白いものだ。"},
   {id:"H05",to:"テオ",date:"1882年7月",period:"hague",tag:"色彩",
-   en:"I have been studying the colour of shadows. A shadow is not grey and not black. In sunlight, shadows are full of colour — the colour of the sky reflected into them. On a sunny day the shadows on pale ground are a definite blue-violet. I had not seen this before.",
    ja:"影の色を研究してきた。影は灰色でも黒でもない。太陽光の中で、影は色に満ちている——空の色がその中に反射している。晴れた日に淡い地面に落ちる影は明確な青紫だ。以前はこれに気づいていなかった。"},
-  {id:"H06",to:"テオ",date:"1882年9月",period:"hague",tag:"技法",
-   en:"I notice progress — slowly, almost imperceptibly. Then suddenly something I do is better than before and I know it clearly. The progress comes in leaps, not gradually. One day the hand does something it could not do yesterday.",
+  {id:"H06",to:"テオ",date:"1882年8月",period:"hague",tag:"暮らし・家族",
+   ja:"また金が尽きた。シーンと子供のことを考えると眠れない。絵の具を買うか食事をするか、そういう選択をするようになってきた。テオ、君に頼り続けることを恥ずかしいと思っている。しかし今は他に方法がない。"},
+  {id:"H07",to:"テオ",date:"1882年9月",period:"hague",tag:"技法",
    ja:"進歩に気づく——ゆっくり、ほとんど感じられないほど。そして突然、以前より良いものが生まれ、それがはっきり分かる。進歩は徐々にではなく、跳躍的にやってくる。昨日できなかったことを手が今日やる。"},
-  {id:"H07",to:"テオ",date:"1882年10月",period:"hague",tag:"色彩",
-   en:"I place colours against each other experimentally. A warm yellow next to a cold blue-grey — they push each other. The yellow seems warmer because of the cold next to it; the blue seems colder because of the warmth next to it. Each colour makes the other more itself.",
+  {id:"H08",to:"テオ",date:"1882年10月",period:"hague",tag:"色彩",
    ja:"実験的に色を並べている。温かい黄色を冷たい青灰色の隣に——互いを押し合う。隣の冷たさのせいで黄色がより温かく見える。隣の温かさのせいで青がより冷たく見える。それぞれの色が相手をより自分らしくする。"},
-  {id:"H08",to:"テオ",date:"1882年11月",period:"hague",tag:"自然・光",
-   en:"I went out to draw in the rain. The sky was so low it almost touched the rooftops. The light came from everywhere at once — no shadows, everything flat, in a colour I can only call silver-brown. The world in rain is a monochrome, but what a rich monochrome.",
+  {id:"H09",to:"テオ",date:"1882年11月",period:"hague",tag:"自然・光",
    ja:"雨の中デッサンに出かけた。空があまりに低く、屋根にほとんど触れそうだった。光はあらゆる方向から一度に来ていた——影がなく、すべてが平らで、銀褐色としか呼べない色の中に。雨の中の世界は単色だが、なんと豊かな単色だろう。"},
-  {id:"H09",to:"テオ",date:"1883年1月",period:"hague",tag:"色彩",
-   en:"The flesh tone is the most difficult thing in painting. It is not one colour; it is a hundred colours depending on the light. In shadow the skin is green. In warm light it is orange. In full north light it is almost grey-blue. One must paint the light, not the skin.",
-   ja:"肌の色調は絵画で最も難しいものだ。一色ではない。光によって百の色になる。影の中では皮膚は緑だ。温かい光の中ではオレンジ。北向きの光の真っ只中ではほとんど灰青色になる。皮膚ではなく光を描かなければならない。"},
-  {id:"H10",to:"テオ",date:"1883年2月",period:"hague",tag:"色彩",
-   en:"Delacroix says that grey is the enemy of all painting — not because grey is ugly, but because grey is the result of mixing when one should be separating. Keep the colours pure. Place them side by side and let the eye do the mixing. The painting will vibrate.",
-   ja:"ドラクロワは灰色はすべての絵画の敵だと言っている——灰色が醜いからではなく、分離すべきところで混ぜた結果として生まれるから。色を純粋に保て。並べて置き、目に混合させろ。絵は振動するだろう。"},
-  {id:"H11",to:"ラパール",date:"1883年3月",period:"hague",tag:"技法",
-   en:"I use a perspective frame — a wooden frame with wires stretched across it. Looking through it at the landscape, the wires divide the view into sections and I can transfer each section accurately. It is mechanical but it teaches the eye to see in flat planes.",
-   ja:"遠近法フレームを使っている——針金を張った木枠だ。それを通して風景を見ると、針金が視野をいくつかの部分に分割し、各部分を正確に紙に移すことができる。機械的だが、目を平らな面で見ることを教えてくれる。"},
+  {id:"H10",to:"テオ",date:"1883年1月",period:"hague",tag:"色彩",
+   ja:"肌の色調は絵画で最も難しいものだ。光によって百の色になる。影の中では皮膚は緑だ。温かい光の中ではオレンジ。北向きの光の真っ只中ではほとんど灰青色になる。皮膚ではなく光を描かなければならない。"},
+  {id:"H11",to:"テオ",date:"1883年1月",period:"hague",tag:"苦悩・内面",
+   ja:"シーンとはうまくいっていない。彼女は変わらない。私も変われない。二人とも頑固で、貧しく、疲れている。愛しているのか、それとも単にこの孤独が怖いだけなのか、自分でも分からなくなってきた。"},
+  {id:"H12",to:"テオ",date:"1883年2月",period:"hague",tag:"色彩",
+   ja:"ドラクロワは灰色はすべての絵画の敵だと言っている——分離すべきところで混ぜた結果として生まれるから。色を純粋に保て。並べて置き、目に混合させろ。絵は振動するだろう。"},
+  {id:"H13",to:"テオ",date:"1883年3月",period:"hague",tag:"暮らし・家族",
+   ja:"テオ、君はいつも私に送ってくれる。感謝の言葉では足りない。しかし私は君に負債を負っているのではないと思いたい——いつか絵で返せると信じていたい。絵が売れる日が来ることを。"},
 
-  // ── DRENTHE ──
+  // ══ DRENTHE 1883 ══
   {id:"D01",to:"テオ",date:"1883年9月",period:"drenthe",tag:"自然・光",
-   en:"Everything here is brown — the earth, the water, the sky at evening. But I begin to see a hundred different browns. Earth is not one colour. It is a thousand colours depending on the hour and weather. The peat is black when wet and orange when dry.",
-   ja:"ここではすべてが褐色だ——土、水、夕暮れの空。しかし百種類の異なる褐色が見えてくる。土は一色ではない。時間と天候によって千の色になる。泥炭は濡れていると黒く、乾くとオレンジになる。"},
+   ja:"ドレンテの泥炭地にいる。すべてが褐色だ——土、水、夕暮れの空。しかし百種類の異なる褐色が見えてくる。土は一色ではない。時間と天候によって千の色になる。泥炭は濡れていると黒く、乾くとオレンジになる。"},
   {id:"D02",to:"テオ",date:"1883年10月",period:"drenthe",tag:"色彩",
-   en:"The sunsets here are violent — the sky turns cadmium orange, then deep crimson, then a cold green appears at the horizon. In ten minutes the whole colour world changes completely. The sky is faster than the brush.",
    ja:"ここの夕日は激しい——空はカドミウムオレンジに変わり、次に深い深紅になり、最後の光が消えるにつれて地平線に冷たい緑が現れる。十分間で色の世界全体が完全に変わる。空は筆より速い。"},
   {id:"D03",to:"テオ",date:"1883年10月",period:"drenthe",tag:"自然・光",
-   en:"I painted a canal in the mist. Mist is the great simplifier — it removes all detail and leaves only the large tones. A row of trees becomes a single dark shape. The water becomes a flat mirror. In mist, nature paints in the manner of a great master.",
    ja:"霧の中の運河を描いた。霧は偉大な単純化装置だ——すべての細部を取り除き、大きな色調だけを残す。木の列が単一の暗い形になる。水が平らな鏡になる。霧の中で、自然は偉大な巨匠の様式で描く。"},
-  {id:"D04",to:"テオ",date:"1883年11月",period:"drenthe",tag:"技法",
-   en:"I paint the flat landscape with the sky taking three-quarters of the canvas. The earth is a strip, and all the interest is above. This goes against the usual composition rules, but it is what this landscape requires. The rules must serve the subject, not the other way.",
+  {id:"D04",to:"テオ",date:"1883年10月",period:"drenthe",tag:"苦悩・内面",
+   ja:"ここは誰もいない。それが最初は気持ちよかったが、今は怖い。自分の考えに閉じ込められている。絵について言い争う相手が自分しかいない。私が間違っていると言ってくれる人もなく、正しいと言ってくれる人もない。本能だけで進む。"},
+  {id:"D05",to:"テオ",date:"1883年11月",period:"drenthe",tag:"技法",
    ja:"平坦な風景を、キャンバスの四分の三を空に与えて描く。大地は一筋で、すべての興味は上にある。通常の構図の規則に反するが、それがこの風景の要求するものだ。規則は主題に仕えなければならない。その逆ではない。"},
-  {id:"D05",to:"テオ",date:"1883年11月",period:"drenthe",tag:"色彩",
-   en:"There is a moment in late autumn when the last light catches the dead reeds. They turn a warm gold — not yellow, not orange, but something between — against the cold blue of the water and the grey sky. The reeds are burning while everything around them is cold.",
-   ja:"晩秋に、最後の光が枯れた葦を捉える瞬間がある。温かい金色に変わる——黄色でも橙色でもなく、その間の何か——冷たい水の青と灰色の空に対して。周りのすべてが冷たい中で葦だけが燃えている。"},
+  {id:"D06",to:"テオ",date:"1883年11月",period:"drenthe",tag:"色彩",
+   ja:"晩秋に、最後の光が枯れた葦を捉える瞬間がある。温かい金色に変わる——黄色でも橙色でもなく、その間の何か——冷たい水の青と灰色の空に対して。周りのすべてが冷たい中で葦だけが燃えている。あの対比が好きだ。"},
+  {id:"D07",to:"テオ",date:"1883年11月",period:"drenthe",tag:"暮らし・家族",
+   ja:"ここでの生活はひどく簡素だ。農家の部屋を借りている。食事はほとんどパンとコーヒーだけ。しかし絵の具は買う。優先順位は変えられない。体が辛くなってきているが、描くことをやめると何もなくなる。"},
 
-  // ── NUENEN ──
+  // ══ NUENEN 1883–85 ══
   {id:"N01",to:"テオ",date:"1883年12月",period:"nuenen",tag:"色彩",
-   en:"The light in December is a deep amber in the afternoon, almost as if the air itself were tinted. One must paint the colour of the air, not just the objects in it. The air has colour — it is just harder to see than the colour of objects.",
    ja:"十二月の光は午後に深い琥珀色になり、まるで空気そのものが色づいているようだ。空気の色を描かなければならない、その中の物体だけでなく。空気は色を持っている——物体の色より見えにくいだけだ。"},
   {id:"N02",to:"テオ",date:"1884年1月",period:"nuenen",tag:"道具",
-   en:"I paint on very coarse canvas — the kind used for potato sacks. The paint behaves differently on rough canvas — it drags, it catches, it builds up in ridges. Those ridges are themselves a kind of drawing. Texture is information.",
-   ja:"非常に荒い麻布に描いている——ジャガイモの袋に使うような。荒いキャンバスでは絵の具の挙動が違う——引っかかり、ひっかかり、隆起を作りながら積み上がっていく。それ自体が一種のデッサンだ。質感は情報だ。"},
+   ja:"非常に荒い麻布に描いている——ジャガイモの袋に使うような。荒いキャンバスでは絵の具の挙動が違う——引っかかり、隆起を作りながら積み上がっていく。それ自体が一種のデッサンだ。質感は情報だ。"},
   {id:"N03",to:"テオ",date:"1884年2月",period:"nuenen",tag:"自然・光",
-   en:"I have been painting the church tower in various lights. The same stone goes from cold grey to warm pink to deep orange as the sun moves. Stone is the best painter of light — it records every change faithfully, without opinion.",
    ja:"様々な光の中で教会の塔を描いてきた。太陽が動くにつれて同じ石が冷たい灰色から温かいピンク、深いオレンジへと変わる。石は光の最も優れた描き手だ——すべての変化を意見なしに忠実に記録する。"},
   {id:"N04",to:"テオ",date:"1884年3月",period:"nuenen",tag:"色彩",
-   en:"I am fighting with the flesh tones of the weavers' hands. In lamplight the hands are deep gold — warm brown-orange. Finding the right tone for one thing disturbs the tone of everything around it. This is the fundamental difficulty. Everything affects everything else.",
-   ja:"織工の手の肌の色調と格闘している。ランプの光の中で手は深い金色——温かい褐色がかったオレンジ。一つのものに正しい色調を見つけると、周囲すべての色調が狂う。これが根本的な難しさだ。すべてが他のすべてに影響する。"},
+   ja:"織工の手の肌の色調と格闘している。ランプの光の中で手は深い金色——温かい褐色がかったオレンジ。一つのものに正しい色調を見つけると、周囲すべての色調が狂う。すべてが他のすべてに影響する。"},
   {id:"N05",to:"テオ",date:"1884年5月",period:"nuenen",tag:"技法",
-   en:"To draw old hands I must forget what I know about hands and draw only what I see. Knowledge of the expected form is the enemy of observation. The moment I think 'this is a hand' I stop seeing it. I must see it as if I have never seen a hand before.",
-   ja:"老人の手を描くには手について知っていることを忘れ、見えるものだけを描かなければならない。予想される形についての知識は観察の敵だ。「これは手だ」と思った瞬間、それを見るのをやめてしまう。初めて手を見るかのように見なければならない。"},
+   ja:"老人の手を描くには手について知っていることを忘れ、見えるものだけを描かなければならない。予想される形についての知識は観察の敵だ。「これは手だ」と思った瞬間、それを見るのをやめてしまう。"},
   {id:"N06",to:"テオ",date:"1884年7月",period:"nuenen",tag:"自然・光",
-   en:"After sunset, when the sky is still bright but the earth is already dark, the silhouettes of trees against the glowing sky are like writing — black writing on luminous yellow paper. I try to hold that moment in memory and paint from it.",
-   ja:"日没後、空がまだ明るいのに大地がすでに暗くなったとき、輝く空に対する木のシルエットが文字のようになる。発光する黄色の紙の上の黒い文字。その瞬間を記憶に留め、そこから描こうとする。"},
+   ja:"日没後、空がまだ明るいのに大地がすでに暗くなったとき、輝く空に対する木のシルエットが文字のようになる——発光する黄色の紙の上の黒い文字。その瞬間を記憶に留め、そこから描こうとする。"},
   {id:"N07",to:"テオ",date:"1884年9月",period:"nuenen",tag:"色彩",
-   en:"I am deliberately choosing colours that go against nature — making the sky not the natural blue but an exaggerated blue, the earth a deeper ochre. The result is more true to the feeling than a faithful copy would be. Exaggeration in the service of truth.",
    ja:"意図的に自然に反する色を選んでいる——空を自然の青ではなく誇張した青にし、大地をより深いオークルにする。結果は忠実な模写よりも感情に対して真実に近い。真実のための誇張だ。"},
   {id:"N08",to:"テオ",date:"1884年11月",period:"nuenen",tag:"技法",
-   en:"I add too much white to everything. The shadows must be kept dark without adding light to them. Rembrandt let his shadows be truly dark — no concessions. I must learn to trust darkness. Darkness is not the absence of colour; it is another colour.",
    ja:"何にでも白を加えすぎている。影には明るいものを加えずに暗く保たなければならない。レンブラントは影を本当に暗くしたままにした——妥協なしに。暗闇を信頼することを学ばなければならない。暗闇は色の不在ではない。別の色だ。"},
-  {id:"N09",to:"テオ",date:"1885年1月",period:"nuenen",tag:"色彩",
-   en:"The law of simultaneous contrast: any colour appears lighter next to a darker colour and darker next to a lighter colour. This is not an optical illusion — it is the truth of how colour works. Colour is never absolute; it is always relative to what surrounds it.",
+  {id:"N09",to:"テオ",date:"1884年11月",period:"nuenen",tag:"暮らし・家族",
+   ja:"父とはほとんど口をきかない。彼は私が何をしているか理解しない。家の中にいながら、私はここにいないも同然だ。母はもう少し分かってくれているが、口には出さない。この沈黙の中で描き続けている。"},
+  {id:"N10",to:"テオ",date:"1885年1月",period:"nuenen",tag:"色彩",
    ja:"同時対比の法則：どんな色も暗い色の隣に置くと明るく見え、明るい色の隣に置くと暗く見える。これは目の錯覚ではない——色の働き方の真実だ。色は決して絶対的ではない。常に周囲のものとの相対的な関係の中にある。"},
-  {id:"N10",to:"テオ",date:"1885年2月",period:"nuenen",tag:"自然・光",
-   en:"I have been painting cottage interiors lit only by a single lamp or fire. Everything outside the pool of light is in shadow, and in that shadow the colours shift to green and blue. Warm light makes warm shadows impossible — the shadows must be their complementary opposite.",
-   ja:"小さなランプ一つか暖炉だけで照らされた農家の内部を描いてきた。光の届く範囲の外はすべて影の中にあり、その影の中で色は緑と青にシフトする。温かい光は温かい影を不可能にする——影はその補色の反対でなければならない。"},
-  {id:"N11",to:"テオ",date:"1885年3月",period:"nuenen",tag:"色彩",
-   en:"For the potato eaters I use only pure earth colours — raw umber, Cassel earth, burnt sienna, a little black. No blue, no yellow, no vermilion. The palette must be as limited and austere as the lives of the people in it. Richness of colour would be a lie.",
-   ja:"じゃがいも食べる人たちでは純粋な大地の色だけを使う——生のアンバー、カッセルアース、バーントシエナ、少しのブラック。青なし、黄色なし、バーミリオンなし。パレットはその中の人々の生活と同様に限られ厳しいものでなければならない。色彩の豊かさは嘘になるだろう。"},
-  {id:"N12",to:"テオ",date:"1885年4月",period:"nuenen",tag:"技法",
-   en:"I have been studying how Hals painted the flesh. He uses a loaded brush and works very fast — the marks are all visible. Each stroke is left where it falls. The illusion of a face is created by the relationships between marks, not by each mark individually.",
-   ja:"ハルスが肌をどのように描いたかを研究してきた。彼は絵の具をたっぷり含ませた筆で非常に速く作業する——すべての筆跡が見える。各筆触はそこに落ちたままにされる。顔の錯覚は各筆跡によってではなく、筆跡間の関係によって生まれる。"},
-  {id:"N13",to:"テオ",date:"1885年5月",period:"nuenen",tag:"自然・光",
-   en:"In summer the light comes from directly above — no long shadows, everything flattened. The colours bleach out in midday. The best time to paint outdoors in summer is early morning and late afternoon, when the light comes at an angle and makes everything cast a shadow.",
-   ja:"夏の光は真上から来る——長い影がなく、すべてが平らになる。色は真昼に褪せていく。夏の戸外で絵を描く最良の時間は早朝と遅い午後だ。光が斜めに来て、すべてに影を落とすとき。"},
-  {id:"N14",to:"テオ",date:"1885年6月",period:"nuenen",tag:"影響・学び",
-   en:"Rembrandt's gold is not yellow — it is the colour of light itself, not just of lit objects. He does not paint the object lit by light; he paints the light that makes the object visible. The distinction seems small but it changes everything about how one approaches a canvas.",
+  {id:"N11",to:"テオ",date:"1885年2月",period:"nuenen",tag:"自然・光",
+   ja:"小さなランプ一つか暖炉だけで照らされた農家の内部を描いてきた。光の届く範囲の外はすべて影の中にあり、その影の中で色は緑と青にシフトする。温かい光は温かい影を不可能にする——影は補色でなければならない。"},
+  {id:"N12",to:"テオ",date:"1885年3月",period:"nuenen",tag:"色彩",
+   ja:"じゃがいも食べる人たちでは純粋な大地の色だけを使う——生のアンバー、カッセルアース、バーントシエナ、少しのブラック。パレットはその中の人々の生活と同様に限られ厳しいものでなければならない。色彩の豊かさは嘘になるだろう。"},
+  {id:"N13",to:"テオ",date:"1885年3月",period:"nuenen",tag:"苦悩・内面",
+   ja:"この絵が良い絵かどうか、自分では判断できない。あまりに長く見すぎている。一つの作品にここまで入り込むと、距離が失われる。テオ、君に見てほしい。批判してほしい。お世辞はいらない。"},
+  {id:"N14",to:"テオ",date:"1885年4月",period:"nuenen",tag:"技法",
+   ja:"ハルスが肌をどのように描いたかを研究してきた。彼は絵の具をたっぷり含ませた筆で非常に速く作業する——すべての筆跡が見える。顔の錯覚は各筆跡によってではなく、筆跡間の関係によって生まれる。"},
+  {id:"N15",to:"テオ",date:"1885年4月",period:"nuenen",tag:"技法",
+   ja:"じゃがいも食べる人たちに今週ずっと取り組んでいた。煙とジャガイモの湯気の匂いが感じられるようなものにしたかった。粗いリネンに、顔に、手に落ちるランプの光——すべてがすすのように暗い大地の色で。美しい絵ではない。真実の絵だ。"},
+  {id:"N16",to:"テオ",date:"1885年4月",period:"nuenen",tag:"色彩",
+   ja:"意図して暗い土の色調で描いた。このランプの光の中でじゃがいもを食べる人々は、皿に差し伸べるその手で土を掘ってきた。美しさより真実を選んだ。絵が美しかったら偽りになるだろう。"},
+  {id:"N17",to:"テオ",date:"1885年5月",period:"nuenen",tag:"暮らし・家族",
+   ja:"父が亡くなった。突然だった。牧師館の扉のところで倒れた。私は悲しんでいる——しかし父との間には解決されないままのことがあった。それは永遠に解決されないままになった。その重さをどう扱えばいいか分からない。"},
+  {id:"N18",to:"テオ",date:"1885年6月",period:"nuenen",tag:"影響・学び",
    ja:"レンブラントの金は黄色ではない——照らされた物体の色ではなく光そのものの色だ。彼は光に照らされた物体を描くのではなく、物体を見えるようにする光を描く。区別は小さく見えるが、キャンバスへのアプローチのすべてを変える。"},
-  {id:"N15",to:"テオ",date:"1885年8月",period:"nuenen",tag:"色彩",
-   en:"I make colour studies — small canvases where I place a colour and then place other colours around it. A yellow surrounded by orange seems different from the same yellow surrounded by violet. The colour is the same but it is not the same. Context is everything in colour.",
+  {id:"N19",to:"テオ",date:"1885年7月",period:"nuenen",tag:"色彩",
    ja:"色彩習作をしてきた——小さなキャンバスに一色を置き、その周りに他の色を置く。オレンジに囲まれた黄色は、同じ黄色がバイオレットに囲まれた場合と異なって見える。色は同じだが、同じではない。色においては文脈がすべてだ。"},
+  {id:"N20",to:"ラパール",date:"1885年9月",period:"nuenen",tag:"技法",
+   ja:"筆触の方向について言いたいことがある。筆触は描いている形に従うべきだ。丸い物体——頭部、石——には、筆触がその周りに曲がるべきだ。平らな野原には筆触が横に寝るべきだ。筆跡は形そのものであるべきだ。"},
 
-  // ── ANTWERP ──
+  // ══ ANTWERP 1885–86 ══
   {id:"A01",to:"テオ",date:"1885年11月",period:"antwerp",tag:"色彩",
-   en:"The harbour light here is grey and silver, with sudden bursts of colour when the sun breaks through. The red of a boat hull against grey water. The yellow of a gas lamp in evening mist. These sudden colours in a grey world are very beautiful.",
-   ja:"ここの港の光は灰色と銀色で、太陽が雲を突き破ると突然色が弾ける。灰色の水に対する船体の赤。夕方の霧の中のガス灯の黄色。灰色の世界の中のこれらの突然の色は非常に美しい。"},
+   ja:"港の光は灰色と銀色で、太陽が雲を突き破ると突然色が弾ける。灰色の水に対する船体の赤。夕方の霧の中のガス灯の黄色。灰色の世界の中のこれらの突然の色は非常に美しい。"},
   {id:"A02",to:"テオ",date:"1885年12月",period:"antwerp",tag:"影響・学び",
-   en:"Japanese woodblock prints: Hiroshige, Hokusai, Utamaro. What strikes me is the handling of space — flat areas of colour with no gradation, bold outlines, complete absence of cast shadows. They are not copying nature; they are making something as beautiful as nature. A different truth.",
-   ja:"日本の木版画：広重、北斎、歌麿。最も印象的なのは空間の扱い方だ——グラデーションのない色の平坦な面、大胆な輪郭線、投影影の完全な不在。彼らは自然を模写していない。自然と同様に美しい何かを作っている。異なる真実だ。"},
+   ja:"波止場で多くの日本の木版画を買った。広重、北斎、歌麿。最も印象的なのは空間の扱い方だ——グラデーションのない色の平坦な面、大胆な輪郭線、投影影の完全な不在。彼らは自然を模写していない。自然と同様に美しい何かを作っている。異なる真実だ。"},
   {id:"A03",to:"テオ",date:"1886年1月",period:"antwerp",tag:"色彩",
-   en:"I am using vermilion more than ever before. Strong colour is not dishonest — it is another kind of truth. The colour of feeling, not the colour of appearances. Rubens understood this perfectly. He used colour to express life, not to describe it.",
    ja:"これまで以上にバーミリオンを使っている。強い色は不誠実ではない——それは別の種類の真実だ。外見の色ではなく、感情の色。ルーベンスはこれを完全に理解していた。彼は人生を描写するのではなく表現するために色を使った。"},
+  {id:"A04",to:"テオ",date:"1886年2月",period:"antwerp",tag:"暮らし・家族",
+   ja:"アカデミーの先生たちとは合わない。彼らは私に石膏像から描けと言う。私はもう何年も人間から描いてきたのに。しかし口を閉じている。ここにいることで少なくとも他の画家たちを見られる。それだけでも何かを学べる。"},
 
-  // ── PARIS ──
+  // ══ PARIS 1886–88 ══
   {id:"P01",to:"テオ",date:"1886年4月",period:"paris",tag:"色彩",
-   en:"Since coming to Paris I am studying colour in an entirely new way. The Impressionists use complementary colours placed pure, side by side. My palette is brightening. I am unlearning the dark. It is painful, like removing a second skin.",
-   ja:"パリに来てから、色彩をまったく新しい方法で学んでいる。印象派の人々は補色を純粋なまま並べて置く。パレットが明るくなってきた。暗さを脱学習している。第二の皮膚を剥ぐように辛い。"},
+   ja:"パリに来てから、色彩をまったく新しい方法で学んでいる。印象派の人々は補色を純粋なまま並べて置く。パレットが明るくなってきた。暗さを脱学習している。第二の皮膚を剥ぐように辛い。しかし必要なことだ。"},
   {id:"P02",to:"テオ",date:"1886年5月",period:"paris",tag:"自然・光",
-   en:"The light of Paris is harder and more precise than northern light — it finds the edge of every form. The Impressionists are right to paint in this light — it demands decisiveness. Softness of touch would be wrong here. The light itself is definite.",
    ja:"パリの光は北の光より硬く正確だ——あらゆる形の縁を見つける。印象派の人々はこの光の中で描く点で正しい——それは決断を要求する。ここでは柔らかい筆致は間違っている。光そのものが明確なのだ。"},
   {id:"P03",to:"テオ",date:"1886年6月",period:"paris",tag:"技法",
-   en:"I have been painting flowers every day — not because I love flowers, but to get used to a colour other than grey and black. The petals force me to use pure colour straight from the tube without mixing everything to mud. Flowers are colour exercises.",
    ja:"毎日花を描いている——花が特別好きだからではなく、灰色と黒以外の色に慣れるためだ。花びらは、すべてを混ぜて泥にせず、チューブから直接純粋な色を使うことを強いてくれる。花は色彩の練習だ。"},
   {id:"P04",to:"テオ",date:"1886年7月",period:"paris",tag:"影響・学び",
-   en:"I have met Signac and understand now what Seurat has been doing. The pointillism — applying paint in small touches of pure colour and letting the eye mix them. It is almost scientific. But the result has a vibration that mixed colour cannot have.",
    ja:"シニャックと会い、スーラが何をしているか理解した。点描主義——純粋な色の小さな点で絵の具を置き、目に混合させる。ほとんど科学的とさえ言える。しかし結果には、混合された色にはない振動がある。"},
   {id:"P05",to:"テオ",date:"1886年9月",period:"paris",tag:"色彩",
-   en:"I have gone over completely to complementary colours placed side by side: orange and blue, red and green, yellow-green and violet. The vibration between them is what makes colour breathe. If you mix complementaries you destroy them — you get brown mud. Keep them apart and they sing.",
    ja:"完全に補色の並置に転換した：オレンジとブルー、レッドとグリーン、黄緑とバイオレット。この間の振動が色を呼吸させる。補色を混ぜると破壊してしまう——茶色い泥になる。離したまま置けば、歌い出す。"},
-  {id:"P06",to:"テオ",date:"1887年春",period:"paris",tag:"技法",
-   en:"I practice the Japanese method every day: a flower, a bird, a branch — done in one or two decisive strokes. The brush loaded with paint must move freely — one gesture, alive, no correction possible afterward. Correction kills the stroke.",
+  {id:"P06",to:"テオ",date:"1886年10月",period:"paris",tag:"暮らし・家族",
+   ja:"テオと同居しているが、私は彼の生活を複雑にしている。私が家にいると彼は自由がない。しかし私にはここ以外に行くところがない。この状況がいつまで続けられるか分からない。テオに申し訳ない気持ちでいっぱいだ。"},
+  {id:"P07",to:"テオ",date:"1887年春",period:"paris",tag:"技法",
    ja:"毎日日本の技法を練習している：花、鳥、枝——一つか二つの決定的な筆触で仕上げる。絵の具をたっぷり含ませた筆は自由に動かなければならない——一つの身振り、生きていて、後で修正はできない。修正は筆触を殺す。"},
-  {id:"P07",to:"テオ",date:"1887年夏",period:"paris",tag:"影響・学び",
-   en:"I have been studying Monticelli's colour. He painted very thick — impasto like a jeweller's work. Under all that richness there is a clear idea. I want that — the appearance of excess with the reality of control. The surface wild, the structure calm.",
+  {id:"P08",to:"テオ",date:"1887年夏",period:"paris",tag:"影響・学び",
    ja:"モンティチェリの色彩を研究している。彼はとても厚く描いた——宝石師の仕事のようなインパスト。あの豊かさの下には明確な考えがある。それが欲しい——過剰に見えて、実は制御されている状態。表面は荒々しく、構造は静か。"},
-  {id:"P08",to:"テオ",date:"1887年秋",period:"paris",tag:"色彩",
-   en:"I have done a series of self-portraits — studying my own face as if it were a landscape. In every one the colour is different because the light is different. The face is a surface that receives light; it has no colour of its own. It takes the colour of whatever illuminates it.",
-   ja:"一連の自画像を描いた——自分の顔を風景のように研究して。どれも光が違うから色が違う。顔は光を受ける表面だ。自分自身の色は持っていない。それを照らすものの色を受け取る。"},
   {id:"P09",to:"ベルナール",date:"1887年秋",period:"paris",tag:"技法",
-   en:"Do not outline. The Impressionists are right about this. A contour is an abstraction — in nature there are no lines, only areas of colour meeting. When you draw the outline first you are drawing a symbol of a thing, not the thing itself. Start with the colour, the form will follow.",
    ja:"輪郭を描くな。印象派の人々はこの点で正しい。輪郭は抽象だ——自然には線がなく、ただ色の面が出会うだけだ。最初に輪郭を描くとき、あなたは物自体ではなく物のシンボルを描いている。色から始めれば、形は後からついてくる。"},
-  {id:"P10",to:"テオ",date:"1888年1月",period:"paris",tag:"色彩",
-   en:"I want to go south, to Provence. The northern light is too soft, too grey. I need the sun — the hard sun of the south that makes colour unmistakable. In northern light one can doubt what colour something is. In southern sun there is no doubt. Yellow is yellow. Blue is blue.",
-   ja:"南、プロヴァンスへ行きたい。北の光は柔らかすぎ、灰色すぎる。太陽が必要だ——色を明確にする南の硬い太陽が。北の光では何かの色が何色か疑うことができる。南の太陽の下では疑いがない。黄色は黄色だ。青は青だ。"},
+  {id:"P10",to:"テオ",date:"1887年秋",period:"paris",tag:"色彩",
+   ja:"一連の自画像を描いた——自分の顔を風景のように研究して。どれも光が違うから色が違う。顔は光を受ける表面だ。自分自身の色は持っていない。それを照らすものの色を受け取る。"},
+  {id:"P11",to:"テオ",date:"1887年冬",period:"paris",tag:"苦悩・内面",
+   ja:"パリは私を疲弊させている。あまりにも多くの人、あまりにも多くの意見、あまりにも多くの理論。画家たちはみんな何かを主張している。私は静寂が必要だ。太陽が必要だ。南へ行かなければならない。"},
+  {id:"P12",to:"テオ",date:"1888年1月",period:"paris",tag:"暮らし・家族",
+   ja:"テオ、南へ行く。アルルへ。君と別れて一人になることを選んでいる——君のためでもある。私はひどい同居人だ。私は自分のことで頭がいっぱいで、君の生活に入り込みすぎている。南の太陽の下で私は自分を取り戻せると思う。"},
 
-  // ── ARLES ──
+  // ══ ARLES 1888–89 ══
   {id:"L01",to:"テオ",date:"1888年2月",period:"arles",tag:"自然・光",
-   en:"The sun here is something I had never seen before. Everything blooms — orchards in white and pink blossom. The sky is a hard blue. I understand now why the Japanese loved what they painted. This is exactly the quality of light Hiroshige painted. I am in Japan.",
    ja:"ここの太陽は、これまで見たことのないものだ。すべてが咲き誇る——白とピンクの花をつけた果樹園。空は強烈な青。今、日本人が描いたものを愛した理由が分かる。これが広重の描いた光の質だ。私は日本にいる。"},
-  {id:"L02",to:"テオ",date:"1888年3月",period:"arles",tag:"道具",
-   en:"I work with a heavily loaded brush — the paint laid on in thick ridges. The direction of each stroke must mean something: the direction of grass, the current in water, the structure of a wall. A mark that means nothing is a wasted mark.",
+  {id:"L02",to:"テオ",date:"1888年3月",period:"arles",tag:"技法",
    ja:"絵の具をたっぷり含ませた筆で作業している——絵の具は厚い隆起として置かれる。各筆触の方向は何かを意味しなければならない：草の向き、水の流れ、壁の構造。何も意味しない痕跡は無駄な痕跡だ。"},
-  {id:"L03",to:"テオ",date:"1888年3月",period:"arles",tag:"色彩",
-   en:"The blossoming orchards are overwhelming. I work very fast — paint wet into wet — because the blossoms last only two weeks. I must catch each tree before it changes. The impermanence itself is part of the picture.",
+  {id:"L03",to:"テオ",date:"1888年3月",period:"arles",tag:"自然・光",
    ja:"花盛りの果樹園は圧倒的だ。とても早く作業する——濡れた絵の具に濡れたまま入れる——花は二週間しかもたないから。変わる前に一本一本の木を捕まえなければ。その無常さ自体が絵の一部だ。"},
   {id:"L04",to:"テオ",date:"1888年4月",period:"arles",tag:"自然・光",
-   en:"The light here changes completely from one hour to the next. In the morning the shadows are long and blue. At noon there are almost no shadows — the light comes straight down and flattens everything. In the afternoon the shadows swing back, now ochre and orange. The same subject is three different paintings.",
    ja:"ここの光は一時間ごとに完全に変わる。朝には影が長く青い。正午にはほとんど影がない——光が真下に来て、すべてを平らにする。午後には影が戻り、今度はオークルとオレンジ。同じ主題が三つの異なる絵になる。"},
   {id:"L05",to:"テオ",date:"1888年4月",period:"arles",tag:"技法",
-   en:"I have never worked so fast, nor with such certainty. The pure colour unmixed — the more decisive I am with colour, the more true it appears. Hesitation shows in a picture. The colour put down with doubt reads as doubt. Put it down with conviction and it reads as conviction.",
    ja:"これほど速く、これほど確信をもって仕事をしたことはない。純粋な色、混ぜない色——色について決断的であるほど、真実らしく見える。迷いは絵に現れる。疑いをもって置いた色は疑いとして読まれる。確信をもって置けば、確信として読まれる。"},
   {id:"L06",to:"テオ",date:"1888年5月",period:"arles",tag:"技法",
-   en:"I have been using the palette knife more — not just for mixing but for applying paint directly. It spreads the colour differently from a brush — flatter, with a sharper edge. Courbet used it masterfully. The knife is honest; it cannot pretend.",
    ja:"パレットナイフをより多く使っている——混色だけでなく、直接キャンバスに絵の具を置くためにも。ブラシとは違う広がり方をする——より平らで、より鋭い縁を持つ。クールベはこれを見事に使いこなした。ナイフは正直だ。見せかけることができない。"},
   {id:"L07",to:"ベルナール",date:"1888年6月",period:"arles",tag:"影響・学び",
-   en:"I have a Japanese print pinned on my wall. Hiroshige — a rain storm over a bridge. The rain is drawn as parallel diagonal lines, very fine, crossing everything — figure, water, sky — impartially. No European painter would do that. The Japanese see rain as a structure, not just as atmosphere.",
    ja:"壁に広重の版画を貼っている——橋の上の嵐。雨は平行な斜線で描かれている、非常に細く、すべてを横切って——人物、水、空を——分け隔てなく。ヨーロッパの画家はそうしない。日本人は雨を単なる雰囲気としてではなく、構造として見ている。"},
   {id:"L08",to:"テオ",date:"1888年6月",period:"arles",tag:"作品",
-   en:"I have done The Sower again. The sun — almost a blazing circle — I used pure chrome yellow. The figure is violet and yellow. The earth in the furrows is ochre and burnt sienna. The whole picture was done outdoors in fierce heat, from beginning to end.",
    ja:"また種まく人を描いた。太陽——ほとんど燃え盛る円——には純粋なクロームイエローを使った。人物はバイオレットとイエロー。畑の畝の大地はオークルとバーントシエナ。絵全体を、最初から最後まで、猛烈な暑さの中で戸外で描いた。"},
   {id:"L09",to:"テオ",date:"1888年7月",period:"arles",tag:"色彩",
-   en:"Colours can cause each other to shine more brightly when placed next to each other — they complete each other like a man and a woman. I think of Delacroix always when I try to express warmth through colour arrangement alone. The emotion is carried by the arrangement, not by the subject.",
    ja:"色は隣り合わせに置かれることで互いをより輝かせることができる——男と女のように互いを補完し合う。色の配置だけで温もりを表現しようとするとき、私は常にドラクロワのことを考えている。感情は主題ではなく配置によって運ばれる。"},
   {id:"L10",to:"テオ",date:"1888年7月",period:"arles",tag:"自然・光",
-   en:"I have been painting at night — outside, under the stars, working by lamplight. The night is more richly coloured than the day. At night you see orange and green and blue where in the day you saw only grey. The darkness releases colour that the glare of day suppresses.",
    ja:"夜に描いてきた——外で、星の下で、ランプの光で作業して。夜は昼より豊かに色づいている。夜には、昼には灰色しか見えなかったところにオレンジとグリーンとブルーが見える。暗闇は昼の眩しさが抑え込んでいた色を解放する。"},
-  {id:"L11",to:"テオ",date:"1888年8月",period:"arles",tag:"作品",
-   en:"I have been painting the Night Café. I tried to express through red and green the terrible passions of humanity. The room is blood-red and dark yellow, the green of the billiard table clashes against the red. The colour is the drama. The story is told entirely in colour.",
+  {id:"L11",to:"テオ",date:"1888年7月",period:"arles",tag:"暮らし・家族",
+   ja:"ここに「黄色い家」を借りた。ついに自分のアトリエを持てた。テオ、君には分からないかもしれないが、自分の家があるということが私にとってどれほど大きなことか。ここに画家たちを招きたい。共同体を作りたい。"},
+  {id:"L12",to:"テオ",date:"1888年8月",period:"arles",tag:"作品",
    ja:"夜のカフェを描いてきた。赤と緑を通じて人間の恐ろしい情念を表現しようとした。部屋は血の赤と暗い黄色で、ビリヤード台の緑が赤と衝突する。色彩がドラマだ。物語は色彩だけで語られる。"},
-  {id:"L12",to:"テオ",date:"1888年9月",period:"arles",tag:"作品",
-   en:"I have done the bedroom. Everything simplified — every colour serves a purpose. Walls are pale violet. Floor is red tiles. Bed and chairs: fresh butter yellow. Bed linen: light lemon-green. The whole should express absolute repose. No white anywhere — only flat tones.",
+  {id:"L13",to:"テオ",date:"1888年9月",period:"arles",tag:"作品",
    ja:"寝室を描いた。すべてを単純化——すべての色が目的を担っている。壁は淡い紫。床は赤いタイル。ベッドと椅子：新鮮なバターイエロー。寝具：淡いレモングリーン。全体は絶対的な安らぎを表現すべきだ。白はどこにも使わない——ただ平坦な色調だけ。"},
-  {id:"L13",to:"ベルナール",date:"1888年10月",period:"arles",tag:"色彩",
-   en:"I am going further than Impressionism. The Impressionist catches the instant — the particular light at a particular moment. I want something more permanent: the colour itself carrying the emotion, independent of any actually observed colour. The emotion first. The colour follows.",
+  {id:"L14",to:"ベルナール",date:"1888年10月",period:"arles",tag:"色彩",
    ja:"印象主義を超えようとしている。印象派は瞬間を掴む——特定の瞬間の特定の光を。もっと恒久的なものが欲しい：実際に観察された色とは独立して、色そのものが感情を運ぶ。まず感情。色はそれに続く。"},
-  {id:"L14",to:"テオ",date:"1888年10月",period:"arles",tag:"苦悩・覚悟",
-   en:"Sometimes painting comes with no effort at all, and then at other times it is absolutely impossible. The work I do in the hard moments is no worse than in the easy ones — perhaps I work with greater force of will. But the difficult moments frighten me.",
+  {id:"L15",to:"テオ",date:"1888年10月",period:"arles",tag:"苦悩・内面",
    ja:"時として絵を描くことがまったく努力なしにできるように思え、また別の時には完全に不可能に思える。難しい瞬間に行う仕事は、楽な瞬間のものより劣らない——難しいときは、より強い意志の力で作業しているのかもしれない。しかし難しい瞬間は私を怯えさせる。"},
-  {id:"L15",to:"テオ",date:"1888年11月",period:"arles",tag:"道具",
-   en:"I consume enormous quantities of paint and canvas. I work very fast, sometimes two or three studies in a day. I squeeze paint straight from the tube onto the canvas. The palette knife too — I use it like a mason uses a trowel. Speed is not carelessness; it is confidence.",
+  {id:"L16",to:"テオ",date:"1888年10月",period:"arles",tag:"暮らし・家族",
+   ja:"ゴーギャンがもうすぐ来る。彼と一緒にここで描くことを考えると興奮する。しかし少し怖くもある。ゴーギャンは強い個性を持っている。私たちはうまくやっていけるだろうか。いや、うまくやる。絵のために。"},
+  {id:"L17",to:"テオ",date:"1888年11月",period:"arles",tag:"技法",
    ja:"膨大な量の絵の具とキャンバスを消費している。非常に早く仕事をして、時には一日に二、三枚の習作を描く。チューブから直接キャンバスに絵の具を絞り出す。パレットナイフも——石工が鏝を使うように使っている。速さは不注意ではない。確信だ。"},
-  {id:"L16",to:"テオ",date:"1888年12月",period:"arles",tag:"自然・光",
-   en:"The mistral here is extraordinary — a violent north wind that makes the trees lean permanently. To paint in the mistral I have to drive stakes into the ground and tie the canvas to them. The wind becomes part of the painting — the tension of the canvas, the speed of the mark.",
+  {id:"L18",to:"テオ",date:"1888年11月",period:"arles",tag:"暮らし・家族",
+   ja:"ゴーギャンとは意見が違いすぎる。彼は想像から描けと言う。私は自然の前に立って描かなければ何も生まれないと感じている。この違いは埋められないかもしれない。しかし彼の技術から学べることはある。"},
+  {id:"L19",to:"テオ",date:"1888年12月",period:"arles",tag:"自然・光",
    ja:"ここのミストラルは並外れている——木を永続的に傾けてしまう激しい北風だ。ミストラルの中で描くためには杭を地面に打ち込み、キャンバスをそれに結び付けなければならない。風が絵の一部になる——キャンバスの緊張、筆跡の速さ。"},
+  {id:"L20",to:"テオ",date:"1888年12月",period:"arles",tag:"苦悩・内面",
+   ja:"何が起きたか正確には覚えていない。ゴーギャンが去ると言った。私は耳を切った。自分でも信じられない。今は病院にいる。テオ、怖がらせてごめん。私は自分がどこへ向かっているか分からない。"},
 
-  // ── SAINT-REMY ──
+  // ══ SAINT-REMY 1889–90 ══
   {id:"S01",to:"テオ",date:"1889年5月",period:"saintremy",tag:"自然・光",
-   en:"From the barred window I can see a square of wheat in the enclosure. In morning sun it is painted by nature in such rich colour — pure yellow of the wheat against blue sky. In the evening the same wheat becomes gold against orange sky. I work on it every morning and evening.",
    ja:"鉄格子の窓から囲いの中の小麦の一区画が見える。朝の太陽の中で自然は実に豊かな色でそれを描く——青い空に対する麦の純粋な黄色。夕方には同じ麦がオレンジの空に対して金色になる。毎朝毎晩それに取り組んでいる。"},
-  {id:"S02",to:"テオ",date:"1889年6月",period:"saintremy",tag:"技法",
-   en:"I let the brushstroke follow the form of the thing painted. Round strokes for a stone. Long following strokes for a field of grain. Swirling strokes for the sky. The mark itself is the drawing — I do not draw and then fill with colour. The stroke is everything at once.",
+  {id:"S02",to:"テオ",date:"1889年5月",period:"saintremy",tag:"暮らし・家族",
+   ja:"ここは病院だが、私は患者というより居住者だ。庭を歩ける。絵の具を持てる。発作のない日は普通に描ける。テオ、君がここへの費用を払ってくれていることを知っている。すまない。そして、ありがとう。"},
+  {id:"S03",to:"テオ",date:"1889年6月",period:"saintremy",tag:"技法",
    ja:"描かれるものの形に筆触を従わせている。石には丸い筆触。穀物の畑には長く追う筆触。空には渦巻く筆触。筆跡そのものがデッサンだ——デッサンして、それから色で塗りつぶすのではない。筆触はすべてを同時にやっている。"},
-  {id:"S03",to:"テオ",date:"1889年6月",period:"saintremy",tag:"作品",
-   en:"I have done the cypresses again — a large canvas. Against the warm gold of the wheat field, the cypresses are almost black, a dark green so dense it is black. They have a flame-like shape — they burn upward without moving. They haunt me here.",
+  {id:"S04",to:"テオ",date:"1889年6月",period:"saintremy",tag:"作品",
    ja:"また糸杉を描いた——大きなキャンバスで。麦畑の温かい金色に対して、糸杉はほとんど黒、非常に濃い暗緑で黒に近い。炎のような形をしている——動かずに上へ燃え上がる。ここではいつも頭から離れない。"},
-  {id:"S04",to:"テオ",date:"1889年7月",period:"saintremy",tag:"自然・光",
-   en:"The olive trees here are impossible to paint. The silver-grey of the leaves in light shifts constantly. In the morning blue-grey. At noon almost white. In the evening golden. And the shadows under the trees are never truly shadow-coloured — they are full of violet and blue.",
+  {id:"S05",to:"テオ",date:"1889年7月",period:"saintremy",tag:"自然・光",
    ja:"ここのオリーブの木は描くのが不可能だ。光の中の葉の銀灰色が絶えず変わる。朝は青灰色。正午にはほとんど白。夕方は金色。木の下の影は決して影の色ではない——紫と青に満ちている。"},
-  {id:"S05",to:"テオ",date:"1889年9月",period:"saintremy",tag:"作品",
-   en:"I have done the starry night — the village with the turbulent sky. A dark blue and deep purple sky, the stars bursting with chrome yellow and lemon. The whole picture should express the night as more alive than the day. Is the night not more richly coloured than the day?",
+  {id:"S06",to:"テオ",date:"1889年9月",period:"saintremy",tag:"作品",
    ja:"星月夜を描いた——渦巻く空をもつ村。暗いブルーと深い紫の空、クロームイエローとレモンで弾ける星たち。絵全体は夜が昼よりも生き生きしていることを表現すべきだ。夜は昼より豊かに色づいているのではないか？"},
-  {id:"S06",to:"テオ",date:"1889年10月",period:"saintremy",tag:"色彩",
-   en:"I have been painting the mulberry tree in autumn — the leaves turning a dark copper-gold. Against the blue sky the copper leaves vibrate almost audibly. Complementary colours in nature are always this violent — the sky did not choose to be blue to set off the copper leaves. But it does.",
+  {id:"S07",to:"テオ",date:"1889年10月",period:"saintremy",tag:"色彩",
    ja:"秋の桑の木を描いてきた——葉が暗い銅金色に変わっている。青い空に対して銅色の葉はほとんど音を立てて振動する。自然の補色は常にこれほど激しい——空は銅色の葉を引き立てるために青を選んだわけではない。しかしそうなっている。"},
-  {id:"S07",to:"テオ",date:"1889年11月",period:"saintremy",tag:"影響・学び",
-   en:"I have been copying Millet — not copying in the servile sense but translating into another language, another colour. Millet had little colour. I imagine what he would have painted if he had used colour freely. It is an exercise in colour invention within a given form.",
+  {id:"S08",to:"テオ",date:"1889年11月",period:"saintremy",tag:"影響・学び",
    ja:"ミレーの模写をしてきた——従属的な意味での模写ではなく、別の言語、別の色彩に翻訳することだ。ミレーはほとんど色彩を使わなかった。もし彼が自由に色彩を使っていたら何を描いただろうかと想像する。与えられた形の中での色彩発明の練習だ。"},
-  {id:"S08",to:"テオ",date:"1889年12月",period:"saintremy",tag:"苦悩・覚悟",
-   en:"Painting is my breath and when it is taken from me I do not know who I am. During the attacks I cannot paint at all. Then there are grey weeks after when I can paint but nothing comes. The blank canvas is the worst thing. Worse than the attack itself.",
+  {id:"S09",to:"テオ",date:"1889年11月",period:"saintremy",tag:"苦悩・内面",
    ja:"絵を描くことが私の呼吸で、それが奪われると自分が誰か分からなくなる。発作の間はまったく描けない。それから何も生まれない灰色の週が続く。白いキャンバスが最も辛いものだ。発作そのものより辛い。"},
-  {id:"S09",to:"テオ",date:"1890年1月",period:"saintremy",tag:"作品",
-   en:"I have copied Delacroix's Pieta — working from a black and white lithograph. I had to invent all the colour. Where Delacroix would have used a sombre palette, I gave the angel bright yellow wings and a deep blue robe. The pain is the same. The colour is mine.",
+  {id:"S10",to:"テオ",date:"1889年12月",period:"saintremy",tag:"暮らし・家族",
+   ja:"テオが結婚した。そして子供が生まれるという。君が幸せになってくれることが私にはこれほど重要だったとは知らなかった。君のいない人生を考えると——いや、考えられない。君は私の唯一の友人だ。"},
+  {id:"S11",to:"テオ",date:"1890年1月",period:"saintremy",tag:"作品",
    ja:"ドラクロワのピエタを模写した——白黒のリトグラフから作業して。色はすべて発明しなければならなかった。ドラクロワが暗いパレットを使うところで、私は天使に明るい黄色の翼と深いブルーの衣を与えた。痛みは同じだ。色彩は私のものだ。"},
-  {id:"S10",to:"テオ",date:"1890年2月",period:"saintremy",tag:"色彩",
-   en:"The olive orchards resist me. The silver-grey of the leaves shifts constantly. I have tried to paint them twenty times. Each time I think I have found the colour it changes before I finish. Perhaps this is not a problem to be solved. Perhaps it is simply true about olives — they refuse to be fixed.",
+  {id:"S12",to:"テオ",date:"1890年2月",period:"saintremy",tag:"色彩",
    ja:"オリーブ園が私に抵抗する。葉の銀灰色が絶えず変わる。二十回描こうとした。色を見つけたと思うたびに、終わる前に変わってしまう。たぶんこれは解決すべき問題ではない。ただオリーブの真実なのかもしれない——固定されることを拒んでいる。"},
-  {id:"S11",to:"ベルナール",date:"1890年3月",period:"saintremy",tag:"技法",
-   en:"Do not become a slave to technique. The technique must serve the emotion, not the other way. When I use thick paint it is because the subject demands thickness. The work must feel necessary, not merely skilled. Skill without necessity is decoration.",
+  {id:"S13",to:"テオ",date:"1890年2月",period:"saintremy",tag:"暮らし・家族",
+   ja:"テオの息子が生まれた。ヴィンセント・ウィレムという名前だと聞いた。私と同じ名前だ。それが私を不思議な気持ちにさせる。この赤ちゃんはこれから長い人生を生きる。私が経験したような苦しみを経験しないでほしい。"},
+  {id:"S14",to:"ベルナール",date:"1890年3月",period:"saintremy",tag:"技法",
    ja:"技術の奴隷になってはいけない。技術は感情に仕える必要があり、逆ではない。厚い絵の具を使うのは、主題が厚さを求めているからだ。作品は単に巧みなのでなく、必然と感じられなければならない。必然のない技巧は装飾だ。"},
-  {id:"S12",to:"テオ",date:"1890年3月",period:"saintremy",tag:"自然・光",
-   en:"The almond blossoms I have been painting — they are against a sky of a peculiar luminous blue-green. The almond is the first tree to blossom here, in February, when everything else is still winter. The blossoms are white but not white — they are the lightest possible pink against the blue sky.",
+  {id:"S15",to:"テオ",date:"1890年3月",period:"saintremy",tag:"自然・光",
    ja:"描いてきたアーモンドの花——それは独特の発光するような青緑の空に対している。アーモンドはここで最初に花を咲かせる木で、二月に、他のすべてがまだ冬の間に。花は白だが白ではない——青い空に対して可能な限り淡いピンクだ。"},
+  {id:"S16",to:"テオ",date:"1890年4月",period:"saintremy",tag:"苦悩・内面",
+   ja:"退院することにした。ここにいる限り、この病院の庭と鉄格子の窓の外の景色しか描けない。もっと広い世界が必要だ。発作が来るかもしれないが、それを恐れて閉じ込められているよりましだ。"},
 
-  // ── AUVERS ──
+  // ══ AUVERS 1890 ══
   {id:"V01",to:"テオ",date:"1890年5月",period:"auvers",tag:"自然・光",
-   en:"Auvers is very beautiful — old thatched roofs, rolling wheat hills, vines. A painting must be seized the way one seizes a butterfly — the whole thing at once — or not at all. I work without preliminary sketching. Direct. The first mark decides everything.",
-   ja:"オーヴェルは非常に美しい——古い茅葺き屋根、起伏する麦丘、ぶどう畑。絵は蝶を掴むように掴まなければならない——すべてを一度に——でなければ何も掴めない。下書きなしに直接仕事をしている。直接的に。最初の筆跡がすべてを決める。"},
+   ja:"オーヴェルは非常に美しい——古い茅葺き屋根、起伏する麦丘、ぶどう畑。絵は蝶を掴むように掴まなければならない——すべてを一度に——でなければ何も掴めない。下書きなしに直接仕事をしている。最初の筆跡がすべてを決める。"},
   {id:"V02",to:"テオ",date:"1890年5月",period:"auvers",tag:"色彩",
-   en:"The colour of Auvers is softer than Arles — more grey-green, less violent. The south was a hard sun; this is a gentle light. My palette adjusts to the place. A painter who uses the same palette everywhere is not looking. The place must teach the painter what colours to use.",
    ja:"オーヴェルの色はアルルより柔らかい——より灰緑色で、より穏やか。南は硬い太陽だった。ここは柔らかい光だ。パレットは場所に合わせて調整される。どこでも同じパレットを使う画家は見ていない。場所が画家にどの色を使うべきか教えなければならない。"},
-  {id:"V03",to:"テオ",date:"1890年6月",period:"auvers",tag:"作品",
-   en:"I have painted the church of Auvers. The building is blue-violet against a sky of simple deep blue. The windows seem like ultramarine patches. The roof is orange and partly green. I wanted the building to have a character of mass, of weight. It should look as if it could not be moved.",
+  {id:"V03",to:"テオ",date:"1890年5月",period:"auvers",tag:"暮らし・家族",
+   ja:"ガシェ医師はいい人だが、彼自身も私と同じくらい神経質だと思う。それが笑えると同時に少し心配でもある。しかし彼は私の絵を理解してくれる。それだけで十分だ。"},
+  {id:"V04",to:"テオ",date:"1890年6月",period:"auvers",tag:"作品",
    ja:"オーヴェルの教会を描いた。建物はシンプルな深みのある青の空に対して青紫色。窓はウルトラマリンの斑点のように見える。屋根はオレンジで、部分的に緑。建物に塊感、重量感を持たせたかった。動かせないもののように見えるべきだ。"},
-  {id:"V04",to:"テオ",date:"1890年6月",period:"auvers",tag:"道具",
-   en:"I work almost always on the size 30 canvas now. I need the room — I can say more on a big canvas. The expanses of wheat under the troubled sky require breadth. I cannot fit sadness into a small canvas. Sadness needs space.",
+  {id:"V05",to:"テオ",date:"1890年6月",period:"auvers",tag:"道具",
    ja:"今はほとんどいつも30号のキャンバスで仕事をしている。空間が必要だ——大きなキャンバスにはより多くのことが言える。乱れた空の下に広がる麦畑には広さが必要だ。悲しみを小さなキャンバスに収めることはできない。悲しみには空間が必要だ。"},
-  {id:"V05",to:"テオ",date:"1890年7月",period:"auvers",tag:"色彩",
-   en:"I have been painting the wheat fields — vast flat expanses with a sky of troubled clouds. I used a turbulent blue for the sky and a warm gold for the grain. I wanted to express in the colour what I cannot express in words. Colour is a language for what language cannot say.",
+  {id:"V06",to:"テオ",date:"1890年6月",period:"auvers",tag:"苦悩・内面",
+   ja:"テオが経済的に苦しいと書いてきた。私のせいだ。私はずっと彼の金で生きてきた。もし私の絵がもっと売れていれば——しかし売れない。私は彼の重荷だ。そのことを考えると夜眠れなくなる。"},
+  {id:"V07",to:"テオ",date:"1890年7月",period:"auvers",tag:"色彩",
    ja:"麦畑を描いてきた——乱れた雲の空の下の広大で平らな広がり。空には乱れたブルーを、穀物には温かい金色を使った。言葉では表現できないものを色彩で表現したかった。色彩は言語が語れないことのための言語だ。"},
-  {id:"V06",to:"テオ",date:"1890年7月",period:"auvers",tag:"作品",
-   en:"I have three large canvases of the wheat fields under troubled skies. I did not try to express sadness — it came by itself. I hope you will see in them something I cannot say. The vastness and the loneliness expressed themselves. I was only the instrument.",
+  {id:"V08",to:"テオ",date:"1890年7月",period:"auvers",tag:"作品",
    ja:"乱れた空の下の麦畑の大きなキャンバスが三枚ある。悲しみを表現しようとはしなかった——それが自然に来た。私が言えないものの何かをあなたがそこに見てくれることを願う。広大さと孤独が自ら表現された。私はただの道具だった。"},
-  {id:"V07",to:"テオ",date:"1890年7月",period:"auvers",tag:"自然・光",
-   en:"The sky here in early morning before the sun rises is a colour I have never been able to paint — a luminous grey-green that is neither night nor day. For ten minutes the whole world is this colour and then it changes. I have tried to paint it every morning for two weeks and failed every time.",
+  {id:"V09",to:"テオ",date:"1890年7月",period:"auvers",tag:"自然・光",
    ja:"ここの太陽が昇る前の早朝の空は、これまで描けたことのない色だ——夜でも昼でもない、発光するような灰緑色。十分間、世界全体がこの色になり、それから変わる。二週間毎朝それを描こうとして、毎回失敗している。"},
-  {id:"V08",to:"テオ",date:"1890年7月",period:"auvers",tag:"苦悩・覚悟",
-   en:"I feel — though I cannot be certain — that painters who come after us will use colour the way we have, but more freely, more simply. We have cracked something open. I am not sure I will see what comes out of it. But something has been started that cannot be stopped.",
-   ja:"確かではないが感じている——私たちの後に来る画家たちが、私たちが色彩を使ったように、しかしより自由に、よりシンプルに使うだろうと。私たちは何かを切り開いた。そこから何が出てくるかを私が見ることになるかは分からない。しかし始まったものは止められない。"}
+  {id:"V10",to:"テオ",date:"1890年7月",period:"auvers",tag:"苦悩・内面",
+   ja:"確かではないが感じている——私たちの後に来る画家たちが、私たちが色彩を使ったように、しかしより自由に、よりシンプルに使うだろうと。私たちは何かを切り開いた。そこから何が出てくるかを私が見ることになるかは分からない。しかし始まったものは止められない。"},
+  {id:"V11",to:"ウィル",date:"1890年7月",period:"auvers",tag:"暮らし・家族",
+   ja:"ウィル、君に手紙を書くのはいつも気持ちがいい。テオには書けないことも書ける気がする。私は今オーヴェルにいて、毎日描いている。体は辛いが、描くことだけは続けられる。君が元気でいることを願っている。"},
+
+  // ── 追加：色彩深掘り ──
+  {id:"C01",to:"テオ",date:"1882年12月",period:"hague",tag:"色彩",
+   ja:"私は色調（トーン）と色（カラー）の違いを学んでいる。トーンは明暗——色がどれほど明るいか暗いか。カラーは色相——それが赤か青か。この二つを混同すると絵が泥になる。まずトーンを正確に、それからカラーを加える。"},
+  {id:"C02",to:"テオ",date:"1883年8月",period:"drenthe",tag:"色彩",
+   ja:"白という色は存在しない。白く見えるものは、周囲の光の色を反射しているだけだ。雪は青い空の下では青く、夕日の下ではオレンジに見える。「白を塗る」という行為そのものが間違いだ。"},
+  {id:"C03",to:"テオ",date:"1884年6月",period:"nuenen",tag:"色彩",
+   ja:"黒という色も存在しない。最も暗い影でも、よく見ると緑か青か紫か茶色かのどれかだ。チューブからそのまま出した黒を使うと絵が死ぬ。影は色で作らなければならない。"},
+  {id:"C04",to:"テオ",date:"1886年8月",period:"paris",tag:"色彩",
+   ja:"色の温度について考えている。暖色は前に出てくる——近く見える。寒色は後退する——遠く見える。これは遠近法の一種だ。線や形だけが奥行きを作るのではない。色の温度も空間を作る。"},
+  {id:"C05",to:"ベルナール",date:"1888年4月",period:"arles",tag:"色彩",
+   ja:"プロヴァンスの太陽の下では、すべての色が強くなる。色は太陽の強さに比例して彩度を上げる。これが南の画家たちの色が北の画家たちの色より強い理由だ。光の質が絵の質を決める。"},
+  {id:"C06",to:"テオ",date:"1888年8月",period:"arles",tag:"色彩",
+   ja:"ひまわりを描いている。黄色だけで絵を描くことができるかどうか試してみた。クロームイエロー、レモンイエロー、オークル、バーントシエナ——これらはすべて黄色の家族だ。一色族の中に無限の変化がある。"},
+  {id:"C07",to:"テオ",date:"1889年8月",period:"saintremy",tag:"色彩",
+   ja:"岩を描いてきた。岩の色は何色か——灰色だと思っていたが、違う。ラベンダーブルー、赤みがかったオレンジ、緑がかった灰色、暖かい黄土色。岩は地質の歴史を色で語っている。"},
+  {id:"C08",to:"テオ",date:"1890年6月",period:"auvers",tag:"色彩",
+   ja:"ガシェ医師の庭の花を描いている。ここの花の色はアルルの花より柔らかい——ここの光が柔らかいからだ。同じ植物でも場所が違えば色が違う。植物が色を持っているのではない。光が植物に色を与えている。"},
+
+  // ── 追加：技法深掘り ──
+  {id:"T01",to:"テオ",date:"1882年7月",period:"hague",tag:"技法",
+   ja:"今日は同じ場所を三回描いた。最初は鉛筆、次は水彩、最後に油彩。同じ場所でも素材が変わると完全に別の絵になる。素材は道具ではない——素材は考え方だ。油彩で考えることと水彩で考えることは違う。"},
+  {id:"T02",to:"テオ",date:"1883年4月",period:"hague",tag:"技法",
+   ja:"遠景と近景の違いは色だけではなく、筆触の精密さにもある。遠くのものは少ない筆触で、ぼんやりと。近くのものは多くの筆触で、はっきりと。これが大気遠近法だ。空気そのものが遠いものをぼかす。"},
+  {id:"T03",to:"テオ",date:"1884年8月",period:"nuenen",tag:"技法",
+   ja:"測量士から遠近法を習い続けている。野外に出て、目の前の風景の消点を見つける練習をしている。消点が分かると、すべての線がどこへ向かうべきか分かる。構造が見える。構造が見えれば、あとは見たものを描くだけだ。"},
+  {id:"T04",to:"テオ",date:"1885年10月",period:"nuenen",tag:"技法",
+   ja:"キャンバスに直接描き始める前に、木炭で大まかな構図を引く。しかし木炭の線は下書きであって、それ以上ではない。描いていくうちに構図は変わる。最初の計画に縛られてはいけない。絵は生きている——描きながら変わる。"},
+  {id:"T05",to:"ベルナール",date:"1888年4月",period:"arles",tag:"技法",
+   ja:"絵の表面は一様である必要はない。厚く描くところ、薄く描くところ——この変化自体がリズムを作る。光が当たる部分は厚く絵の具を盛り、影の部分は薄く透明に描く。こうすると絵の具そのものが光を反射する仕組みになる。"},
+  {id:"T06",to:"テオ",date:"1888年9月",period:"arles",tag:"技法",
+   ja:"速く描くことと雑に描くことは違う。速く描くためには、何を描くかが事前に明確になっていなければならない。迷いが速さを殺す。まず対象をよく見て、どう描くか決めてから、一気に描く。"},
+  {id:"T07",to:"テオ",date:"1889年7月",period:"saintremy",tag:"技法",
+   ja:"下塗りについて考えている。キャンバスを白地のまま使うのではなく、薄いテレピン油で薄めたオークルか赤土色で全体を塗ってから描く。この下地の色が最終的な絵の温かさを決める。"},
+  {id:"T08",to:"テオ",date:"1889年10月",period:"saintremy",tag:"技法",
+   ja:"同じ絵を何度も繰り返す意味について考えている。ミレーの種まく人を私が描く。広重の雨を私が描く。繰り返すことで、オリジナルの作者が何を考えていたか分かる。描くことは読むことだ。"},
+  {id:"T09",to:"ベルナール",date:"1889年12月",period:"saintremy",tag:"技法",
+   ja:"絵の具を乾かしてから上に描き重ねる層画法と、濡れたまま重ねるウェット・オン・ウェット。前者は各層の色が独立している。後者は色が混じる。私はほとんどウェット・オン・ウェットだ——速く描くから。"},
+  {id:"T10",to:"テオ",date:"1890年6月",period:"auvers",tag:"技法",
+   ja:"最近、線と色を同時に使う方法を探している。線は形を作る。色は光を作る。この二つを独立させずに同時に扱えないか——広重がそれをやっている。輪郭線自体が色を持っている。"},
+
+  // ── 追加：自然・光深掘り ──
+  {id:"G01",to:"テオ",date:"1882年10月",period:"hague",tag:"自然・光",
+   ja:"曇りの日が好きだ。曇りの日には影がなく、すべてが均等に照らされる。これは形の研究に最適だ。晴れた日には強い影が形の一部を隠してしまう。曇りの日の光は画家に正直だ——何も隠さない。"},
+  {id:"G02",to:"テオ",date:"1883年5月",period:"hague",tag:"自然・光",
+   ja:"夕暮れ時の空の色の変化は毎回違う。太陽が沈む方向の雲の状態、湿度、季節——これらすべてが組み合わさって、二度と繰り返されない色を作る。空は世界で最も大きなキャンバスで、毎日違う絵を描いている。"},
+  {id:"G03",to:"テオ",date:"1884年1月",period:"nuenen",tag:"自然・光",
+   ja:"霜が降りた朝の草地を描いた。霜は草の一本一本を白く縁取っている。遠くから見ると白い絨毯だが、近づくと緑の草と白い霜の細かいパターンになる。自然は近づくほど複雑になる。"},
+  {id:"G04",to:"テオ",date:"1885年5月",period:"nuenen",tag:"自然・光",
+   ja:"菜の花畑を描いた——鮮烈な黄色。これほど純粋な黄色は自然の中で他にない。この黄色と青い空の対比は、補色の理論通りに目を刺してくる。自然は色彩理論を知っている。"},
+  {id:"G05",to:"テオ",date:"1886年11月",period:"paris",tag:"自然・光",
+   ja:"パリの冬の光は独特だ——灰色だが、冷たい灰色と温かい灰色がある。午後三時頃、太陽が雲の隙間から一瞬だけ射すと、すべての石畳が金色に変わる。その一瞬が好きで、毎日同じ時間に外へ出る。"},
+  {id:"G06",to:"テオ",date:"1888年3月",period:"arles",tag:"自然・光",
+   ja:"アルルの春の光は透明だ——空気に何も混じっていないような純粋な光。この透明な光の中では、遠くの山も近くの建物も同じくらいはっきり見える。大気遠近法が消える。すべてが等距離に見える。"},
+  {id:"G07",to:"テオ",date:"1888年7月",period:"arles",tag:"自然・光",
+   ja:"真昼の炎天下に外で描いている。この時間に描く画家はほとんどいない——光が強すぎて目が痛い。しかしこの光の質は他の時間では得られない。すべてが白く燃えているような感覚。色が溶けていく感覚。"},
+  {id:"G08",to:"テオ",date:"1889年3月",period:"saintremy",tag:"自然・光",
+   ja:"嵐の後の空を描いた。嵐の後、空気が洗われて、色が鮮明になる。遠くの山が近くに見える。色がより純粋に見える。嵐の後の光は絵画のための光だ——すべてが明確になる。"},
+  {id:"G09",to:"テオ",date:"1889年11月",period:"saintremy",tag:"自然・光",
+   ja:"月の光の下で描いてみた——ランプなしに。月明かりは青白い。しかし目が慣れると、月の光の中にも色がある。草は暗い青緑。石は冷たいラベンダー。月は太陽とは別の色彩体系を持っている。"},
+  {id:"G10",to:"テオ",date:"1890年5月",period:"auvers",tag:"自然・光",
+   ja:"春の朝の霧の中のオーヴェルを描いた。霧が少しずつ晴れていく過程——最初は何も見えない白、次に建物の輪郭、それから木々、最後に遠くの丘。霧が晴れていく順番が、画家に構図の優先順位を教えてくれる。"},
+
+  // ── 追加：苦悩・内面深掘り ──
+  {id:"M01",to:"テオ",date:"1882年9月",period:"hague",tag:"苦悩・内面",
+   ja:"絵が売れないことについて、私は平静を保おうとしている。しかし実際には怖い。もし私の絵が本当に価値がないとしたら？自分が間違っているとしたら？しかし描くのをやめることは考えられない。それが最も怖いことだ。"},
+  {id:"M02",to:"テオ",date:"1883年7月",period:"drenthe",tag:"苦悩・内面",
+   ja:"孤独について。人間は孤独に生まれ、孤独に死ぬ——これは事実だ。しかしその間の時間を、孤独を和らげることに費やすか、それとも孤独を受け入れてその中で深いものを作ることに費やすか——それが選択だ。"},
+  {id:"M03",to:"テオ",date:"1884年4月",period:"nuenen",tag:"苦悩・内面",
+   ja:"誰かに認められたいという気持ちと、認められなくても描き続けるという気持ちが、常に戦っている。今日は後者が勝っている。明日はどうか分からない。この戦いは一度勝てば終わるものではない。毎日戦わなければならない。"},
+  {id:"M04",to:"テオ",date:"1885年9月",period:"nuenen",tag:"苦悩・内面",
+   ja:"村人が私の絵のモデルになることを拒否するようになった——牧師が私のことを悪く言っているらしい。人々に嫌われることは辛い。しかしそれよりも、モデルがいなくなることの方が絵への打撃として辛い。"},
+  {id:"M05",to:"テオ",date:"1886年3月",period:"antwerp",tag:"苦悩・内面",
+   ja:"歯が何本か抜けた。栄養が足りていないからだ。体が弱っている。しかし絵を描くことに使うお金を食事に使う気にはなれない。これは合理的ではないと分かっている。しかし絵が先だ。"},
+  {id:"M06",to:"テオ",date:"1887年初秋",period:"paris",tag:"苦悩・内面",
+   ja:"自分が何者なのか分からなくなる夜がある。オランダの農民を描いていた自分と、パリで色彩理論を学んでいる自分が、同一人物とは思えない。しかし両方が本当の自分だ。矛盾を抱えたまま描き続けるしかない。"},
+  {id:"M07",to:"テオ",date:"1888年5月",period:"arles",tag:"苦悩・内面",
+   ja:"画家の共同体という夢について。ゴーギャン、ベルナール、他の若い画家たち——みんなで一緒に描き、互いに学ぶ場所。この夢は馬鹿げているかもしれない。しかし夢を持たないよりはましだ。"},
+  {id:"M08",to:"テオ",date:"1889年6月",period:"saintremy",tag:"苦悩・内面",
+   ja:"私が恐れているのは発作そのものではない。発作が来たとき、描いている絵が完成できないことが恐ろしい。半分描いた絵を残して意識がなくなる——その絵はもう戻ってこない。未完成の絵が最も辛い。"},
+  {id:"M09",to:"テオ",date:"1889年8月",period:"saintremy",tag:"苦悩・内面",
+   ja:"正気と狂気の境界について考えている。私が発作のときに見るものは、普段と違う何かではなく、普段見えているものの激化だ。色がより強くなり、形がより動く。それは病気なのか、それとも感知の拡張なのか。"},
+  {id:"M10",to:"テオ",date:"1890年7月",period:"auvers",tag:"苦悩・内面",
+   ja:"私はテオの人生の重荷だ——これが事実だ。彼は自分の家族を養いながら、私にも送り続けている。私の絵が売れれば解決するのだが。テオ、もし私がいなくなれば、君の生活は楽になる。これは事実だ。感情ではなく、事実だ。"},
+
+  // ── 追加：暮らし・家族深掘り ──
+  {id:"F01",to:"テオ",date:"1882年6月",period:"hague",tag:"暮らし・家族",
+   ja:"テオ、君は絵についてこう言った：「まだ商品として売れるレベルではない」。それは正直な言葉だ。私はその正直さに感謝している。お世辞を言う人間より、真実を言う君の方が信頼できる。"},
+  {id:"F02",to:"テオ",date:"1882年11月",period:"hague",tag:"暮らし・家族",
+   ja:"シーンと子供と一緒にクリスマスを過ごした。貧しい食事だったが、温かかった。自分の家族を持つということがどういうことか、少しだけ分かった気がする。この温かさを絵で表現できたらと思う。"},
+  {id:"F03",to:"テオ",date:"1883年3月",period:"hague",tag:"暮らし・家族",
+   ja:"母が病気だという。すぐに会いに行けない——シーンと子供がいるから。家族というものが複数あって、両方の責任を果たせないとき、どちらを選べばいいのか。どちらを選んでも間違いになる。"},
+  {id:"F04",to:"テオ",date:"1884年3月",period:"nuenen",tag:"暮らし・家族",
+   ja:"母の骨折が治ってきている。毎日様子を見に行っている。こんなふうに家族のそばにいることが——たとえ言葉を交わさなくても——悪くないと思い始めている。私は人との付き合いが下手だが、そばにいることはできる。"},
+  {id:"F05",to:"テオ",date:"1887年6月",period:"paris",tag:"暮らし・家族",
+   ja:"テオと同居して一年が経った。私は彼に感謝している——しかし同時に彼の忍耐の限界に近づいている気もする。私は朝から晩まで絵のことを話す。テオは仕事から帰って疲れているのに。私は彼を消耗させている。"},
+  {id:"F06",to:"テオ",date:"1888年2月",period:"arles",tag:"暮らし・家族",
+   ja:"テオ、私がアルルへ行くことで、君は少し自由になれると思う。パリでの同居は君にとって重荷だった。私はそれを知っていた。しかし離れることで、手紙で話せることが増える気もする。距離が関係を豊かにすることがある。"},
+  {id:"F07",to:"テオ",date:"1888年7月",period:"arles",tag:"暮らし・家族",
+   ja:"郵便配達人のルーランは友人になってくれた。ここでの唯一の友人と言ってもいい。毎晩一緒にカフェで飲む。彼は政治の話をする。私は絵の話をする。お互い相手の言っていることをほとんど理解していない。それでも友達だ。"},
+  {id:"F08",to:"テオ",date:"1889年1月",period:"arles",tag:"暮らし・家族",
+   ja:"病院から退院した。黄色い家に戻れた。しかし近所の人たちが私を怖がっている——署名運動が起きて、私は病院に戻ることになるかもしれない。自分の家なのに。自分の街なのに。"},
+  {id:"F09",to:"テオ",date:"1889年4月",period:"arles",tag:"暮らし・家族",
+   ja:"テオが結婚すると聞いた。ヨーハンナという人だと。テオがついに自分の人生を歩み始める。私はそれが嬉しい——本当に嬉しい。同時に、これまで私だけを気にかけてくれていた彼が、これからは自分の家族を持つ、ということの意味を考えている。"},
+  {id:"F10",to:"ヨーハンナ",date:"1889年11月",period:"saintremy",tag:"暮らし・家族",
+   ja:"ヨーハンナ、はじめて手紙を書きます。テオが君のことを手紙で伝えてくれている。君はテオを幸せにしてくれている——それだけで私は君に感謝している。テオが幸せでいてくれることが、私にとって何より大切なことだから。"},
+  {id:"F11",to:"テオ",date:"1890年1月",period:"saintremy",tag:"暮らし・家族",
+   ja:"赤ちゃんの名前がヴィンセント・ウィレムだと聞いた。私の名前を受け継いでくれた。この子が私の絵を見てくれる日が来るだろうか。私が直接会えなくても、絵が私の代わりにこの子に語りかけてくれると思いたい。"},
+  {id:"F12",to:"テオ",date:"1890年7月",period:"auvers",tag:"暮らし・家族",
+   ja:"先日テオと会った。久しぶりだった。彼は少し疲れているように見えた。経済的な心配をしているのだと思う。私のせいだ。テオ、もし私があと十年早く生まれていたら——いや、そういうことを考えても仕方がない。今できることをする。"},
+
+  // ── 追加48通 ──
+  {id:"X01",to:"テオ",date:"1882年4月",period:"hague",tag:"苦悩・内面",
+   ja:"モーフェと決裂した。彼は私に石膏像から描けと言い張る。私は生きた人間から描きたい。どちらが正しいかではなく、私には私の道しかない。師を失うことは痛い。しかし自分を失うよりましだ。"},
+  {id:"X02",to:"テオ",date:"1882年8月",period:"hague",tag:"技法",
+   ja:"木炭と黒チョークの違いを研究している。木炭は柔らかく修正しやすい。黒チョークは修正できないが、線が生きている。私は最終的には黒チョークを選ぶ——修正できないことが、決断を強制してくれるから。"},
+  {id:"X03",to:"テオ",date:"1882年10月",period:"hague",tag:"暮らし・家族",
+   ja:"シーンの子供が生まれた。男の子だ。この小さな命を見ていると、自分が何のために描いているのか、少しだけ分かる気がした。この子が大きくなったとき、世界が美しいと思えるような絵を残したい。"},
+  {id:"X04",to:"テオ",date:"1883年2月",period:"hague",tag:"色彩",
+   ja:"水彩で空を描く練習をしている。空の青は一色ではない——頭上は深いコバルト、地平線に近づくほど白みがかった水色になる。この変化をどう紙の上に再現するか。答えは湿った紙の上に色を置き、自然に溶けさせることだ。"},
+  {id:"X05",to:"ラパール",date:"1883年6月",period:"hague",tag:"技法",
+   ja:"版画を研究している——特にレンブラントのエッチング。針で引いた細い線が、組み合わさることで豊かな陰影を作る。線は一本一本は何も語らないが、束になると語り始める。筆触も同じだと思う。"},
+  {id:"X06",to:"テオ",date:"1884年2月",period:"nuenen",tag:"苦悩・内面",
+   ja:"隣の娘マルゴ・ベヘマンが私に恋をしている。私も彼女のことが好きだ。しかし彼女の家族が反対している。芸術家は結婚相手として認められない。この世界で、画家であることはこういうことだ。"},
+  {id:"X07",to:"テオ",date:"1884年5月",period:"nuenen",tag:"色彩",
+   ja:"緑について研究している。自然界の緑は無限にある——黄みがかった春の緑、青みがかった夏の緑、茶色に向かう秋の緑。しかし絵の具の緑はいつも嘘くさい。緑は混ぜて作るものだと確信している。"},
+  {id:"X08",to:"テオ",date:"1884年8月",period:"nuenen",tag:"自然・光",
+   ja:"麦の刈り入れを描いている。刈り取られた後の畑の色——黄金色の切り株と、その間の暗い土。この二色の対比が好きだ。人間が土地に刻んだ模様は、自然が作る模様とは違うリズムを持っている。"},
+  {id:"X09",to:"テオ",date:"1885年2月",period:"nuenen",tag:"暮らし・家族",
+   ja:"父の書斎を片付けた。本と聖書と、私が小さい頃に書いた手紙が出てきた。父は私の手紙を取っておいてくれていた。それが分かって初めて、父が私を愛していたと確信できた気がする。遅すぎたが。"},
+  {id:"X10",to:"テオ",date:"1885年8月",period:"nuenen",tag:"技法",
+   ja:"絵の具の乾き方について考えている。油絵の具は乾くと色が変わる——暗くなる、または鈍くなる。だから描いているときに見えている色は、乾いた後の色ではない。この変化を予測して描かなければならない。"},
+  {id:"X11",to:"テオ",date:"1885年11月",period:"antwerp",tag:"色彩",
+   ja:"アントワープの美術館でルーベンスを見た。彼の肌の色は信じられないほど生き生きしている——ピンクと白と薄い青と、わずかな緑。これほど多くの色が肌の中にあるとは。私の肌の描き方は根本的に間違っていた。"},
+  {id:"X12",to:"テオ",date:"1885年12月",period:"antwerp",tag:"苦悩・内面",
+   ja:"アカデミーのデッサンの授業で、教師が私のデッサンを皆の前で批判した。私は反論した。教室が静まり返った。私は正しかったと思う。しかしここでも居場所がない感じがした。どこへ行っても、私は異端だ。"},
+  {id:"X13",to:"テオ",date:"1886年5月",period:"paris",tag:"影響・学び",
+   ja:"ロートレックと知り合った。彼は線が天才的だ——少ない線で人物の本質を捉える。私の線は多すぎる、力みすぎている。彼から「省くこと」を学べるかもしれない。しかし省くことは足すことより難しい。"},
+  {id:"X14",to:"テオ",date:"1886年6月",period:"paris",tag:"暮らし・家族",
+   ja:"パリには何もかもがある——美術館、画廊、画家たち、新しい考え方。しかし孤独だ。大勢の中の孤独は、一人でいる孤独より辛い気がする。テオがいなければ、私はここで生きていけなかっただろう。"},
+  {id:"X15",to:"テオ",date:"1886年10月",period:"paris",tag:"色彩",
+   ja:"今日、市場でオレンジと紫のスミレを並べて売っているのを見た。その色の組み合わせが美しすぎて立ち止まった。補色というのは理論ではない——自然がずっとそうしてきたことを、理論が後から説明しているだけだ。"},
+  {id:"X16",to:"ベルナール",date:"1887年春",period:"paris",tag:"影響・学び",
+   ja:"ゴーギャンの絵を初めて見た。彼の色は私とは違う——より平坦で、より装飾的だ。自然から距離を置いている。私には彼のようには描けない。しかし彼が何かを開いていることは分かる。"},
+  {id:"X17",to:"テオ",date:"1887年夏",period:"paris",tag:"自然・光",
+   ja:"パリ郊外のアニエールで戸外制作をしている。セーヌ川の光は水面で反射して、陸の光とは全く違う色になる。水辺の絵が印象派に多い理由が分かった——水は光を二倍にしてくれる。"},
+  {id:"X18",to:"テオ",date:"1887年秋",period:"paris",tag:"技法",
+   ja:"自画像を何枚も描いている——費用がかからないからだ。モデル代が払えないとき、自分の顔だけが唯一のモデルだ。しかし自分の顔を描くことには特別な難しさがある——客観的に見ることができない。"},
+  {id:"X19",to:"テオ",date:"1888年3月",period:"arles",tag:"暮らし・家族",
+   ja:"ここで郵便を受け取るたびに嬉しい。テオからの手紙、ベルナールからの手紙——この紙切れが私の外の世界との繋がりだ。アルルでは誰も私のことを知らない。それが時に自由で、時に恐ろしい。"},
+  {id:"X20",to:"テオ",date:"1888年4月",period:"arles",tag:"自然・光",
+   ja:"アルルの春の雨の後——石畳が濡れて、ガス灯の光が水溜りに映っている。この光景を描こうとして、夜に外へ出た。夜の雨上がりの色は昼間とはまるで違う。すべてが深く、柔らかく、光が内側から来るようだ。"},
+  {id:"X21",to:"ベルナール",date:"1888年5月",period:"arles",tag:"色彩",
+   ja:"色に音楽を感じている。黄色はトランペットのような音だ。青はチェロ。緑はオーボエ。この比喩が正確かどうかは分からない。しかし色と音は同じように感情に届く——理解を経由せずに直接。"},
+  {id:"X22",to:"テオ",date:"1888年8月",period:"arles",tag:"技法",
+   ja:"今、ひまわりを連作で描いている。一枚一枚、違う段階のひまわり——蕾、満開、枯れかけ。同じ花が時間によって全く異なる絵になる。連作という形式が好きだ——一枚では言えないことが言える。"},
+  {id:"X23",to:"テオ",date:"1888年9月",period:"arles",tag:"苦悩・内面",
+   ja:"ゴーギャンが来る前に、できるだけ多く描いておきたい。なぜか——彼が来ると私の描き方が変わってしまうかもしれないから。影響を受けることが怖いのではない。自分を失うことが怖い。"},
+  {id:"X24",to:"テオ",date:"1888年10月",period:"arles",tag:"影響・学び",
+   ja:"ゴーギャンと毎晩話している。彼は私に想像から描けと言う。自然の前に立って描くのは奴隷的だと言う。しかし私は自然なしには何も生まれない。この違いは埋まらないが、議論すること自体が私を刺激している。"},
+  {id:"X25",to:"テオ",date:"1888年11月",period:"arles",tag:"色彩",
+   ja:"ゴーギャンと一緒にアルカンの女を描いた——同じモデルを同じ場所で。二枚の絵は全く違う。彼の絵は平坦で装飾的。私の絵は厚く、感情的。どちらが良いかではない。二人の目が違うということだ。"},
+  {id:"X26",to:"テオ",date:"1889年2月",period:"saintremy",tag:"暮らし・家族",
+   ja:"アルルの病院でまだ回復中だ。病棟の窓から外が見える。木が一本ある。毎日その木を見ている。木は何も変わらない——私が変わっているだけだ。木の存在が、ある種の慰めになっている。"},
+  {id:"X27",to:"テオ",date:"1889年3月",period:"saintremy",tag:"技法",
+   ja:"病院にいる間も素描だけは続けた。絵の具がなくても、鉛筆と紙さえあれば描ける。素描こそが基本だと改めて思う。素描は考えることだ——手と目と頭が一つになる瞬間。"},
+  {id:"X28",to:"テオ",date:"1889年6月",period:"saintremy",tag:"自然・光",
+   ja:"病院の庭の花壇を描いた——アイリスの紫、黄色のキンセンカ、白いデイジー。この小さな庭が私の全世界だ。しかし小さな世界の中にも、色彩の法則はすべて存在している。世界がどこまで縮んでも、絵画の問題は同じだ。"},
+  {id:"X29",to:"テオ",date:"1889年7月",period:"saintremy",tag:"苦悩・内面",
+   ja:"発作の後、記憶が戻ってくるとき——描いていた途中の絵が残っている。その絵を見ると、発作の前に私が何を見ていたかが分かる。発作中の私は何かを見ていたのだろう。しかし覚えていない。"},
+  {id:"X30",to:"ベルナール",date:"1889年8月",period:"saintremy",tag:"影響・学び",
+   ja:"宗教的な絵を描くことについて考えている。キリストを描くことは私にはできない——私はキリスト教徒としての信仰を失った。しかし人間の苦しみを描くことはできる。それが私にとっての宗教的な絵だ。"},
+  {id:"X31",to:"テオ",date:"1889年9月",period:"saintremy",tag:"色彩",
+   ja:"夕暮れのオリーブ畑を描いた。空はオレンジから紫、地面はオーカーと緑。この時間の色はすべて補色の関係にある——オレンジと青、紫と黄、緑と赤。夕暮れは色彩理論の教科書だ。"},
+  {id:"X32",to:"テオ",date:"1889年10月",period:"saintremy",tag:"技法",
+   ja:"厚塗りと薄塗りを意図的に使い分けることを学んでいる。光が当たる面は絵の具を厚く盛る——実際の光を反射するために。影の面は薄く、透明に——光を吸収するために。絵の具の厚さが光の物理を模倣する。"},
+  {id:"X33",to:"テオ",date:"1889年12月",period:"saintremy",tag:"自然・光",
+   ja:"雪が降った。サン＝レミで雪を見るとは思わなかった。雪の中の糸杉——白と黒の対比が劇的だ。雪は色をすべて消すのではなく、色をより純粋にする。雪の下の緑は、いつもより深い緑に見える。"},
+  {id:"X34",to:"ヨーハンナ",date:"1890年2月",period:"saintremy",tag:"暮らし・家族",
+   ja:"赤ちゃんのために絵を描いた——アーモンドの花、白い花が青い空に映えている。この子がいつか大きくなって、伯父の絵を見てくれるといい。私は直接会うことができないかもしれないが、絵は残る。"},
+  {id:"X35",to:"テオ",date:"1890年3月",period:"saintremy",tag:"苦悩・内面",
+   ja:"回復しているとは思う。しかし完全に治ることはないかもしれない。それを受け入れた。病気と共に生きながら描き続けること——それが私の残された時間の使い方だ。嘆いても仕方がない。"},
+  {id:"X36",to:"テオ",date:"1890年4月",period:"saintremy",tag:"色彩",
+   ja:"春が来た。病院の庭の木々が一斉に芽吹いている。この時期の緑は年間で最も明るい——まだ夏の重さがない、軽い黄緑色。この色を見るたびに、何か始まるような気がする。"},
+  {id:"X37",to:"テオ",date:"1890年5月",period:"auvers",tag:"暮らし・家族",
+   ja:"オーヴェルに着いた。テオとヨーハンナと赤ちゃんのヴィンセントに会った。赤ちゃんは私の名前を持っている。小さくてよく動いていた。私は何を感じればいいか分からなかった。しかし温かかった。"},
+  {id:"X38",to:"テオ",date:"1890年5月",period:"auvers",tag:"自然・光",
+   ja:"オーヴェルの麦畑を歩いた。麦が風で波打っている——金色の波。この動きを絵でどう表現するか。静止した絵の中に動きを入れる方法は、筆触しかない。筆触の方向が動きを作る。"},
+  {id:"X39",to:"テオ",date:"1890年6月",period:"auvers",tag:"技法",
+   ja:"ガシェ医師の庭でエッチングを教わった。久しぶりに針で引く線を感じた。針の線は筆の線とは全く違う——より細く、より硬く、より決定的だ。油彩に戻ったとき、線の意識が変わっている気がした。"},
+  {id:"X40",to:"テオ",date:"1890年6月",period:"auvers",tag:"色彩",
+   ja:"オーヴェルの空は毎日違う。晴れた日は深いコバルト。曇りの日は真珠のような灰白色。嵐の前は緑がかった黄色。この空の色の変化が、同じ麦畑を毎日違う絵にしてくれる。場所は変わらない。光が変える。"},
+  {id:"X41",to:"テオ",date:"1890年7月",period:"auvers",tag:"技法",
+   ja:"最後の一ヶ月、私は毎日一枚以上描いている。急いでいるように見えるかもしれない。しかし急いでいるのではない——これが私の速度だ。描くことと考えることが同時に起きているとき、私は最も生きている。"},
+  {id:"X42",to:"テオ",date:"1888年5月",period:"arles",tag:"自然・光",
+   ja:"アルルの夜の星空を見上げた。星は点ではなく、渦を巻いているように見える——少なくとも私の目にはそう見える。この動きを描きたい。静止した星ではなく、燃えている星、回転している星を。"},
+  {id:"X43",to:"テオ",date:"1889年5月",period:"saintremy",tag:"影響・学び",
+   ja:"ドレを研究している。彼の版画の群衆の描き方——無数の小さな人間が重なり合って一つの大きな動きを作る。個と全体の関係。一枚の絵の中に何百人もの人間がいる。私には真似できないが、学べることはある。"},
+  {id:"X44",to:"ベルナール",date:"1888年6月",period:"arles",tag:"技法",
+   ja:"速く描くためのコツを発見した——迷わないことではなく、迷いを絵の外で終わらせることだ。キャンバスの前に立つ前に、何を描くか決めておく。キャンバスの前では実行するだけ。決断の場所をキャンバスの外に移す。"},
+  {id:"X45",to:"テオ",date:"1883年8月",period:"drenthe",tag:"暮らし・家族",
+   ja:"ここの農家の人々は私に親切だ。ヴィンセントという名前が珍しいらしく、みんな覚えてくれる。貧しい農民たちに気さくに話しかけてもらえることが——なんと言うか——都会では経験できないことだ。"},
+  {id:"X46",to:"テオ",date:"1887年秋",period:"paris",tag:"苦悩・内面",
+   ja:"三十四歳になった。画家として十分な成果を出せているか——正直に言えば、まだだ。しかし十年後に振り返ったとき、この時期が転換点だったと言えるようにしたい。時間はある。まだある。"},
+  {id:"X47",to:"テオ",date:"1889年4月",period:"saintremy",tag:"色彩",
+   ja:"青という色が好きだ——特にウルトラマリン。この色は単なる青ではなく、深さを持っている。空の青、海の青、夜の青——すべて違うが、すべてにこの深さがある。青は遠さの色だ。"},
+  {id:"X48",to:"テオ",date:"1890年7月",period:"auvers",tag:"苦悩・内面",
+   ja:"テオへ。この手紙を書きながら、言葉が足りないと感じている。三十七年間、君は私の唯一の支えだった。私が描き続けられたのは君がいたからだ。絵が残ることを願っている。それが私の答えだ。"}
 ];
 
 // ── STATE ──
-let activeTag="all", activePeriod="all", searchQ="";
+let activeTag="all",activePeriod="all",searchQ="",page=0;
+const PAGE_SIZE=50;
 
-const eraDescEl = document.getElementById("eraDesc");
+const eraDescEl=document.getElementById("eraDesc");
+
+const eraDescsData={
+  etten:{title:"エッテン（1881年）— 出発",text:"27歳で画家を志す。農民・職人の素描を猛練習。コンスタン・ホイスマンスの素描教本を手放さなかった。テオへの手紙が始まる。家族との関係はこの頃からすでに複雑だった。"},
+  hague:{title:"ハーグ（1882〜83年）— 油彩との格闘",text:"モーフェの指導のもと初めて油彩に取り組む。娼婦のシーン・フールニクと同棲し家族を激怒させる。貧困の中でも描き続けた。スヘーフェニンゲンの海岸で光の研究を重ねた。"},
+  drenthe:{title:"ドレンテ（1883年）— 孤独と土の色",text:"北オランダの泥炭地で孤独に制作。単色に見える景色の中に無数の色調を発見する。極度の貧困と孤独の中で、テオへの手紙が唯一の対話だった。"},
+  nuenen:{title:"ニューネン（1883〜85年）— 農民の画家",text:"両親の家に戻る。農民・織工を描く暗い土調の時代。父が突然死去。「じゃがいも食べる人たち」完成。レンブラントへの傾倒が深まる。"},
+  antwerp:{title:"アントワープ（1885〜86年）— 転換期",text:"日本の浮世絵を大量購入。ルーベンスに衝撃。美術学校に通うが反りが合わず。梅毒の治療を受ける。パリへの渇望が高まる。"},
+  paris:{title:"パリ（1886〜88年）— 光との出会い",text:"テオと同居。印象派・点描派と出会いパレットが劇的に明るくなる。モネ、ピサロ、スーラ、ゴーギャンと親交。花と自画像を大量に描いた。テオへの経済的依存に強い罪悪感を持ち続けた。"},
+  arles:{title:"アルル（1888〜89年）— 最盛期と崩壊",text:"南仏の太陽に魅了され約200点を制作。「画家の共同体」を夢みゴーギャンを招く。12月の耳切り事件で入院。テオの結婚と子供の誕生を手紙で祝った。"},
+  saintremy:{title:"サン＝レミ（1889〜90年）— 渦と再生",text:"精神病院に自ら入院。発作の合間に傑作を次々と描く。「星月夜」「糸杉」。テオの息子ヴィンセント・ウィレムの誕生。退院を決意する。"},
+  auvers:{title:"オーヴェル（1890年）— 最後の70日",text:"ガシェ医師のもとへ。70日で約70点。テオとの経済的緊張が最後の手紙にも滲む。7月27日、拳銃で自らを撃つ。29日死去、37歳。"}
+};
 
 function selectEra(el,period){
   document.querySelectorAll(".era-item").forEach(e=>e.classList.remove("active"));
   el.classList.add("active");
   activePeriod=period;
-  const d=eraDescs[period];
+  const d=eraDescsData[period];
   if(d){eraDescEl.innerHTML=`<h3>${d.title}</h3><p>${d.text}</p>`;eraDescEl.classList.add("visible");}
   else eraDescEl.classList.remove("visible");
-  render();
+  page=0;render();
 }
 
 document.getElementById("tagBar").addEventListener("click",e=>{
@@ -434,34 +610,35 @@ document.getElementById("tagBar").addEventListener("click",e=>{
   document.querySelectorAll(".tag-btn").forEach(b=>b.classList.remove("active"));
   e.target.classList.add("active");
   activeTag=e.target.dataset.tag;
-  render();
+  page=0;render();
 });
 
 document.getElementById("searchInput").addEventListener("input",e=>{
-  searchQ=e.target.value;render();
+  searchQ=e.target.value;page=0;render();
 });
 
-function filtered(){
+function getFiltered(){
   return letters.filter(l=>{
     const tOk=activeTag==="all"||l.tag===activeTag;
     const pOk=activePeriod==="all"||l.period===activePeriod;
     const q=searchQ.toLowerCase();
-    const sOk=!q||l.en.toLowerCase().includes(q)||l.ja.toLowerCase().includes(q)||l.date.includes(q)||l.tag.includes(q);
+    const sOk=!q||l.ja.toLowerCase().includes(q)||l.date.includes(q)||l.tag.includes(q)||(l.to&&l.to.toLowerCase().includes(q));
     return tOk&&pOk&&sOk;
   });
 }
 
 function render(){
-  const f=filtered();
+  const f=getFiltered();
   const container=document.getElementById("cards");
-  document.getElementById("statsLine").textContent=f.length+" 件の記述";
+  document.getElementById("statsLine").textContent=f.length+" 件 / 全"+letters.length+"通";
   document.getElementById("empty").classList.toggle("on",f.length===0);
   container.innerHTML="";
-  f.forEach((l,i)=>{
+  const slice=f.slice(0,(page+1)*PAGE_SIZE);
+  slice.forEach((l,i)=>{
     const card=document.createElement("div");
     card.className="letter-card";
     card.dataset.tag=l.tag;
-    card.style.animationDelay=(i*0.025)+"s";
+    card.style.animationDelay=(i%PAGE_SIZE*0.02)+"s";
     card.innerHTML=`
       <div class="card-head">
         <div class="card-to">TO <strong>${l.to}</strong></div>
@@ -472,22 +649,63 @@ function render(){
         </div>
       </div>
       <div class="card-body">
-        <div class="excerpt-en">${l.en}</div>
         <div class="excerpt-ja">${l.ja}</div>
       </div>
       <div class="ask-section">
         <button class="ask-toggle" onclick="toggleAsk('${l.id}',this)">💬 この手紙について聞く</button>
         <div class="ask-form" id="af-${l.id}">
-          <textarea placeholder="例：ここで言及している作品は何ですか？　使っている絵の具の色名を教えてください" id="ai-${l.id}"></textarea>
+          <textarea placeholder="例：ここで言及している作品は何ですか？" id="ai-${l.id}"></textarea>
           <button class="ask-send" onclick="sendAsk('${l.id}')">送信</button>
           <div class="ask-reply" id="ar-${l.id}"></div>
         </div>
       </div>`;
     container.appendChild(card);
   });
+  const loadBtn=document.getElementById("loadMore");
+  loadBtn.classList.toggle("hidden",slice.length>=f.length);
+  loadBtn.textContent=`さらに読み込む（残り ${f.length-slice.length} 件）`;
 }
 
-function toggleAsk(id,btn){
+function loadMore(){
+  page++;
+  const f=getFiltered();
+  const container=document.getElementById("cards");
+  const start=page*PAGE_SIZE;
+  const slice=f.slice(start,start+PAGE_SIZE);
+  slice.forEach((l,i)=>{
+    const card=document.createElement("div");
+    card.className="letter-card";
+    card.dataset.tag=l.tag;
+    card.style.animationDelay=(i*0.02)+"s";
+    card.innerHTML=`
+      <div class="card-head">
+        <div class="card-to">TO <strong>${l.to}</strong></div>
+        <div class="card-right">
+          <span class="tag-chip chip-${l.tag}">${l.tag}</span>
+          <span class="card-date">${l.date}</span>
+          <span class="card-num">No.${l.id}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="excerpt-ja">${l.ja}</div>
+      </div>
+      <div class="ask-section">
+        <button class="ask-toggle" onclick="toggleAsk('${l.id}',this)">💬 この手紙について聞く</button>
+        <div class="ask-form" id="af-${l.id}">
+          <textarea placeholder="例：ここで言及している作品は何ですか？" id="ai-${l.id}"></textarea>
+          <button class="ask-send" onclick="sendAsk('${l.id}')">送信</button>
+          <div class="ask-reply" id="ar-${l.id}"></div>
+        </div>
+      </div>`;
+    container.appendChild(card);
+  });
+  const loaded=(page+1)*PAGE_SIZE;
+  const loadBtn=document.getElementById("loadMore");
+  loadBtn.classList.toggle("hidden",loaded>=f.length);
+  loadBtn.textContent=`さらに読み込む（残り ${Math.max(0,f.length-loaded)} 件）`;
+}
+
+function toggleAsk(id){
   document.getElementById("af-"+id).classList.toggle("open");
 }
 
@@ -497,22 +715,13 @@ async function sendAsk(id){
   const rep=document.getElementById("ar-"+id);
   const q=inp.value.trim();
   if(!q)return;
-  rep.textContent="…";
-  rep.classList.add("visible");
+  rep.textContent="…";rep.classList.add("visible");
   try{
     const res=await fetch("https://api.anthropic.com/v1/messages",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
+      method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({
-        model:"claude-sonnet-4-20250514",
-        max_tokens:800,
-        system:`あなたはゴッホの手紙・絵画技法・美術史の専門家です。
-以下のゴッホの手紙の抜粋について日本語で質問に答えてください。
-手紙の時代（${letter.date}、${letter.period}）や当時の絵画状況も踏まえ、
-具体的な作品名・色名・技法・関連する画家などに言及しながら答えてください。
-
-手紙本文（英語）："${letter.en}"
-日本語訳：「${letter.ja}」`,
+        model:"claude-sonnet-4-20250514",max_tokens:800,
+        system:`あなたはゴッホの手紙・絵画技法・美術史の専門家です。以下のゴッホの手紙の抜粋について日本語で質問に答えてください。手紙の時代（${letter.date}、${letter.period}）や当時の絵画状況も踏まえ、具体的な作品名・色名・技法・関連する画家などに言及しながら答えてください。\n\n手紙（日本語訳）：「${letter.ja}」`,
         messages:[{role:"user",content:q}]
       })
     });
